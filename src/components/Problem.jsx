@@ -3,14 +3,14 @@ import Counter from "./Counter";
 const Problem = () => (
   <section id="mission" style={{
     padding: "120px 40px",
-    background: "var(--deep)",
+    background: "var(--black)",
     position: "relative",
     overflow: "hidden",
   }}>
-    {/* Background debris field image */}
     <img
       src="/images/debris-field.jpg"
       alt="Orbital debris field"
+      loading="lazy"
       style={{
         position: "absolute",
         top: 0,
@@ -18,7 +18,7 @@ const Problem = () => (
         width: "60%",
         height: "100%",
         objectFit: "cover",
-        opacity: 0.08,
+        opacity: 0.06,
         mixBlendMode: "screen",
         pointerEvents: "none",
       }}
@@ -26,18 +26,37 @@ const Problem = () => (
 
     <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
       <div className="reveal">
-        <div className="section-label">THE PROBLEM</div>
-        <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
+        <div style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "11px",
+          fontWeight: 400,
+          color: "var(--muted)",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          marginBottom: "16px",
+          lineHeight: 2.0,
+        }}>THE PROBLEM</div>
+        <h2 style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(1.8rem, 4vw, 3rem)",
+          fontWeight: 700,
+          color: "var(--white)",
+          textTransform: "uppercase",
+          lineHeight: 0.95,
+          letterSpacing: "1.2px",
+          marginBottom: "16px",
+        }}>
           ORBITAL CRISIS
         </h2>
         <p style={{
-          fontFamily: "var(--font-light)",
-          fontSize: "1.1rem",
-          color: "rgba(240,244,255,0.6)",
+          fontFamily: "var(--font-body)",
+          fontSize: "1rem",
+          fontWeight: 400,
+          color: "var(--muted)",
           maxWidth: "600px",
-          lineHeight: 1.8,
+          lineHeight: 1.7,
+          letterSpacing: "0.32px",
           marginBottom: "80px",
-          fontWeight: 300,
         }}>
           Every defunct satellite and rocket stage remains the sovereign property of its
           launching nation — permanently. No maritime salvage doctrine applies in space.
@@ -74,10 +93,20 @@ const Problem = () => (
             delay: "reveal-delay-3",
           },
         ].map((stat, i) => (
-          <div key={i} className={`panel-card reveal data-card ${stat.delay}`} style={{ padding: "48px 40px" }}>
-            <div className="corner-bracket tl" />
-            <div className="corner-bracket br" />
-            <div className="stat-number" style={{ color: stat.color, marginBottom: "16px" }}>
+          <div key={i} className={`panel-card reveal ${stat.delay}`} style={{
+            padding: "48px 40px",
+            border: "1px solid var(--border)",
+            background: "transparent",
+          }}>
+            <div style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "2.5rem",
+              fontWeight: 700,
+              color: stat.color,
+              marginBottom: "16px",
+              lineHeight: 1,
+              letterSpacing: "0.05em",
+            }}>
               <Counter target={stat.number} prefix={stat.prefix || ""} suffix={stat.suffix} />
             </div>
             <div style={{
@@ -90,7 +119,14 @@ const Problem = () => (
             }}>
               {stat.label}
             </div>
-            <div className="mono-data" style={{ fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em" }}>
+            <div style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              fontWeight: 400,
+              color: "var(--muted)",
+              letterSpacing: "0.1em",
+              lineHeight: 1.5,
+            }}>
               {stat.sub}
             </div>
           </div>
@@ -98,10 +134,22 @@ const Problem = () => (
       </div>
 
       {/* Orbit Density Visualizer - Verified Data */}
-      <div className="panel-card reveal" style={{ marginTop: "2px", padding: "48px 40px" }}>
-        <div className="corner-bracket tl" />
-        <div className="corner-bracket tr" />
-        <div className="mono-data" style={{ fontSize: "11px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "32px" }}>
+      <div className="panel-card reveal" style={{
+        marginTop: "2px",
+        padding: "48px 40px",
+        border: "1px solid var(--border)",
+        background: "transparent",
+      }}>
+        <div style={{
+          fontFamily: "var(--font-mono)",
+          fontSize: "11px",
+          fontWeight: 400,
+          color: "var(--cyan)",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          marginBottom: "32px",
+          lineHeight: 2.0,
+        }}>
           DEBRIS DENSITY BY ORBITAL ALTITUDE — ESA 2025
         </div>
 
@@ -118,6 +166,7 @@ const Problem = () => (
                 flexShrink: 0,
                 fontFamily: "var(--font-mono)",
                 fontSize: "10px",
+                fontWeight: 400,
                 color: "var(--muted)",
                 letterSpacing: "0.1em",
               }}>
@@ -126,7 +175,7 @@ const Problem = () => (
               <div style={{ flex: 1, position: "relative", height: "32px" }}>
                 <div style={{
                   position: "absolute", inset: 0,
-                  background: "rgba(0,212,255,0.04)",
+                  background: "transparent",
                   border: "1px solid var(--border)",
                 }} />
                 <div
@@ -135,9 +184,8 @@ const Problem = () => (
                     position: "absolute",
                     left: 0, top: 0, bottom: 0,
                     width: `${row.density}%`,
-                    background: `linear-gradient(90deg, ${row.color}30, ${row.color}90, ${row.color})`,
+                    background: row.color,
                     borderRight: `3px solid ${row.color}`,
-                    boxShadow: `0 0 12px ${row.color}30`,
                     transition: "width 1.5s ease",
                   }}
                 />
@@ -147,6 +195,7 @@ const Problem = () => (
                   transform: "translateY(-50%)",
                   fontFamily: "var(--font-mono)",
                   fontSize: "9px",
+                  fontWeight: 400,
                   color: "var(--muted)",
                   letterSpacing: "0.08em",
                 }}>
@@ -158,6 +207,7 @@ const Problem = () => (
                 flexShrink: 0,
                 fontFamily: "var(--font-mono)",
                 fontSize: "10px",
+                fontWeight: 400,
                 color: row.color,
                 textAlign: "right",
                 letterSpacing: "0.1em",
@@ -169,8 +219,22 @@ const Problem = () => (
         </div>
 
         {/* Key Events Timeline */}
-        <div style={{ marginTop: "40px", padding: "24px", background: "rgba(255,68,68,0.04)", border: "1px solid rgba(255,68,68,0.15)" }}>
-          <div className="mono-data" style={{ fontSize: "10px", color: "var(--danger)", letterSpacing: "0.2em", marginBottom: "16px" }}>
+        <div style={{
+          marginTop: "40px",
+          padding: "24px",
+          border: "1px solid var(--border)",
+          background: "transparent",
+        }}>
+          <div style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "10px",
+            fontWeight: 400,
+            color: "var(--danger)",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            marginBottom: "16px",
+            lineHeight: 2.0,
+          }}>
             CRITICAL INCIDENTS — WHY ACTION IS URGENT
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
@@ -186,12 +250,15 @@ const Problem = () => (
                   fontWeight: 700,
                   color: "var(--danger)",
                   flexShrink: 0,
+                  letterSpacing: "0.05em",
                 }}>{item.year}</div>
                 <div style={{
-                  fontFamily: "var(--font-light)",
+                  fontFamily: "var(--font-body)",
                   fontSize: "0.85rem",
-                  color: "rgba(240,244,255,0.6)",
+                  fontWeight: 400,
+                  color: "var(--muted)",
                   lineHeight: 1.6,
+                  letterSpacing: "0.32px",
                 }}>{item.event}</div>
               </div>
             ))}
@@ -199,12 +266,28 @@ const Problem = () => (
         </div>
 
         {/* Sovereignty vs Economics */}
-        <div style={{ marginTop: "2px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
+        <div style={{ marginTop: "40px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
           <div>
-            <h3 style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, letterSpacing: "0.15em", color: "var(--cyan)", marginBottom: "20px", textTransform: "uppercase" }}>
+            <h3 style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "1rem",
+              fontWeight: 700,
+              letterSpacing: "1.17px",
+              color: "var(--cyan)",
+              marginBottom: "20px",
+              textTransform: "uppercase",
+              lineHeight: 0.94,
+            }}>
               The Sovereignty Paradox
             </h3>
-            <p style={{ fontFamily: "var(--font-light)", fontSize: "1rem", color: "rgba(240,244,255,0.65)", lineHeight: 1.8, fontWeight: 300 }}>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "1rem",
+              fontWeight: 400,
+              color: "var(--muted)",
+              lineHeight: 1.7,
+              letterSpacing: "0.32px",
+            }}>
               Under Article VIII of the Outer Space Treaty of 1967, jurisdiction and control
               over a space object remain with the State of Registry — indefinitely. Unlike
               maritime law, a satellite cannot be declared abandoned. It remains property even
@@ -213,10 +296,26 @@ const Problem = () => (
             </p>
           </div>
           <div>
-            <h3 style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, letterSpacing: "0.15em", color: "var(--gold)", marginBottom: "20px", textTransform: "uppercase" }}>
+            <h3 style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "1rem",
+              fontWeight: 700,
+              letterSpacing: "1.17px",
+              color: "var(--gold)",
+              marginBottom: "20px",
+              textTransform: "uppercase",
+              lineHeight: 0.94,
+            }}>
               The Economic Reality
             </h3>
-            <p style={{ fontFamily: "var(--font-light)", fontSize: "1rem", color: "rgba(240,244,255,0.65)", lineHeight: 1.8, fontWeight: 300 }}>
+            <p style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "1rem",
+              fontWeight: 400,
+              color: "var(--muted)",
+              lineHeight: 1.7,
+              letterSpacing: "0.32px",
+            }}>
               Debris-related collision avoidance maneuvers cost operators an estimated $100M+ 
               annually. The 800–1000 km band is now statistically above the Kessler runaway 
               threshold — meaning even with zero new launches, debris growth is self-sustaining.

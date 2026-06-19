@@ -12,7 +12,7 @@ const SocialBar = () => (
       justifyContent: "center",
       gap: "24px",
       padding: "20px 40px",
-      background: "rgba(0,212,255,0.03)",
+      background: "transparent",
       borderBottom: "1px solid var(--border)",
     }}
   >

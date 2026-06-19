@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import OrbitalCanvas from "./OrbitalCanvas";
 import DataTicker from "./DataTicker";
 import Counter from "./Counter";
@@ -6,12 +6,26 @@ import Counter from "./Counter";
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [videoPaused, setVideoPaused] = useState(false);
+  const videoRef = useRef(null);
+
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setVideoPaused(false);
+      } else {
+        videoRef.current.pause();
+        setVideoPaused(true);
+      }
+    }
+  };
 
   useEffect(() => {
     const handleMouse = (e) => {
       setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 20,
-        y: (e.clientY / window.innerHeight - 0.5) * 20,
+        x: (e.clientX / window.innerWidth - 0.5) * 15,
+        y: (e.clientY / window.innerHeight - 0.5) * 15,
       });
     };
     window.addEventListener("mousemove", handleMouse);
@@ -24,16 +38,38 @@ const Hero = () => {
       height: "100vh",
       minHeight: "700px",
       overflow: "hidden",
-      background: "var(--black)",
+      background: "#000000",
       display: "flex",
       alignItems: "center",
     }}>
-      {/* Orbital canvas fallback behind image */}
+      {/* Orbital canvas fallback */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <OrbitalCanvas />
       </div>
 
-      {/* Real Earth image */}
+      {/* Video background — full-bleed, no scrim */}
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 1,
+          opacity: imgLoaded ? 1 : 0,
+          transition: "opacity 1.5s ease",
+        }}
+        onLoadedData={() => setImgLoaded(true)}
+      >
+        <source src="/images/hero-video.mp4" type="video/mp4" />
+      </video>
+
+      {/* Earth image fallback */}
       <img
         src="/images/hero-earth.jpg"
         alt="Earth from space"
@@ -44,109 +80,83 @@ const Hero = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          zIndex: 1,
-          opacity: imgLoaded ? 1 : 0,
-          transition: "opacity 1.2s ease",
+          zIndex: 0,
+          opacity: imgLoaded ? 0 : 0.5,
         }}
       />
 
-      {/* Dark gradient overlay */}
+      {/* Minimal dark gradient — no heavy scrim, photography does the work */}
       <div style={{
         position: "absolute",
         inset: 0,
         zIndex: 2,
-        background: "linear-gradient(180deg, rgba(4,6,15,0.85) 0%, rgba(4,6,15,0.55) 40%, rgba(4,6,15,0.75) 80%, rgba(4,6,15,1) 100%)",
+        background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.6) 100%)",
       }} />
-
-      {/* Side vignette */}
-      <div style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: 2,
-        background: "linear-gradient(90deg, rgba(4,6,15,0.9) 0%, transparent 35%, transparent 65%, rgba(4,6,15,0.9) 100%)",
-      }} />
-
-      <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.4, zIndex: 3 }} />
-
-      {/* Floating particles */}
-      <div className="particles-container" style={{ zIndex: 4 }}>
-        {Array.from({ length: 25 }).map((_, i) => (
-          <div key={i} style={{
-            position: "absolute",
-            left: `${Math.random() * 100}%`,
-            bottom: "-10px",
-            width: `${Math.random() * 3 + 1}px`,
-            height: `${Math.random() * 3 + 1}px`,
-            background: i % 3 === 0 ? "var(--gold)" : "var(--cyan)",
-            borderRadius: "50%",
-            animation: `particleFloat ${Math.random() * 10 + 8}s linear ${Math.random() * 5}s infinite`,
-            opacity: 0.4,
-          }} />
-        ))}
-      </div>
 
       {/* Content */}
       <div style={{
         position: "relative",
         zIndex: 10,
-        maxWidth: "1100px",
+        maxWidth: "900px",
         padding: "0 40px",
-        marginLeft: "calc(50% - 550px)",
+        marginLeft: "max(40px, calc(50% - 600px))",
         animation: "fadeUp 1s ease 0.3s both",
-        transform: `translate(${mousePos.x * 0.3}px, ${mousePos.y * 0.3}px)`,
+        transform: `translate(${mousePos.x * 0.2}px, ${mousePos.y * 0.2}px)`,
         transition: "transform 0.3s ease-out",
       }}>
-        {/* Status badge */}
+        {/* Eyebrow — all-caps micro text */}
         <div style={{
-          display: "inline-flex",
+          fontFamily: "var(--font-display)",
+          fontSize: "12px",
+          fontWeight: 500,
+          letterSpacing: "0.12em",
+          color: "var(--muted)",
+          textTransform: "uppercase",
+          marginBottom: "24px",
+          display: "flex",
           alignItems: "center",
-          gap: "8px",
-          background: "rgba(0,255,136,0.08)",
-          border: "1px solid rgba(0,255,136,0.2)",
-          padding: "6px 16px",
-          marginBottom: "32px",
-          fontFamily: "var(--font-mono)",
-          fontSize: "11px",
-          letterSpacing: "0.2em",
-          color: "var(--success)",
+          gap: "12px",
         }}>
           <span className="status-dot" />
           PHASE III OPERATIONS — ACTIVE
         </div>
 
-        {/* Main headline */}
+        {/* Display headline — uppercase, tight leading, wide tracking */}
         <h1 className="display-title" style={{
-          fontSize: "clamp(2.5rem, 7vw, 6rem)",
+          fontSize: "clamp(3rem, 8vw, 7rem)",
           color: "var(--white)",
           marginBottom: "8px",
-          lineHeight: 1.05,
+          lineHeight: 0.95,
+          letterSpacing: "0.06em",
         }}>
           WE REMOVE WHAT
         </h1>
         <h1 className="display-title shimmer-text" style={{
-          fontSize: "clamp(2.5rem, 7vw, 6rem)",
+          fontSize: "clamp(3rem, 8vw, 7rem)",
           marginBottom: "32px",
-          lineHeight: 1.05,
+          lineHeight: 0.95,
+          letterSpacing: "0.06em",
         }}>
           HUMANITY LEFT BEHIND
         </h1>
 
-        {/* Subheadline */}
+        {/* Body — clean, minimal */}
         <p style={{
-          fontFamily: "var(--font-light)",
-          fontSize: "clamp(1rem, 2vw, 1.25rem)",
-          color: "rgba(240,244,255,0.65)",
-          maxWidth: "650px",
+          fontFamily: "var(--font-body)",
+          fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
+          color: "var(--muted)",
+          maxWidth: "560px",
           lineHeight: 1.7,
           marginBottom: "48px",
           fontWeight: 300,
+          letterSpacing: "0.32px",
         }}>
           Harver Space Industries operates at the intersection of sovereign law,
           precision engineering, and orbital stewardship. We remove debris. We beam power.
           We build the grid above the grid.
         </p>
 
-        {/* CTAs */}
+        {/* Ghost pill CTAs — one primary, one secondary */}
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
           <button
             className="btn-primary"
@@ -155,16 +165,16 @@ const Hero = () => {
             Explore the Mission
           </button>
           <button
-            className="btn-outline"
+            className="btn-ghost"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
           >
             Partner With Us
           </button>
         </div>
 
-        {/* Live Stats Row */}
+        {/* Live Stats — minimal data row */}
         <div style={{
-          marginTop: "64px",
+          marginTop: "80px",
           display: "flex",
           gap: "48px",
           flexWrap: "wrap",
@@ -177,18 +187,22 @@ const Hero = () => {
             <div key={i} style={{ textAlign: "left" }}>
               <div style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
-                fontWeight: 700,
+                fontSize: "clamp(1.5rem, 3vw, 2rem)",
+                fontWeight: 800,
                 color: stat.color,
-                lineHeight: 1,
-                marginBottom: "4px",
+                lineHeight: 0.95,
+                marginBottom: "6px",
+                letterSpacing: "0.04em",
               }}>
                 <Counter target={stat.value} prefix={stat.prefix || ""} suffix={stat.suffix} />
               </div>
-              <div className="mono-data" style={{
-                fontSize: "10px",
-                color: "var(--muted)",
+              <div style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "11px",
+                fontWeight: 500,
+                color: "var(--muted-dim)",
                 letterSpacing: "0.12em",
+                textTransform: "uppercase",
               }}>
                 {stat.label}
               </div>
@@ -196,13 +210,14 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Coordinates */}
+        {/* Coordinates — micro text */}
         <div style={{
           marginTop: "40px",
           fontFamily: "var(--font-mono)",
           fontSize: "10px",
-          color: "var(--muted)",
-          letterSpacing: "0.15em",
+          color: "var(--muted-dim)",
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
           display: "flex",
           gap: "24px",
           flexWrap: "wrap",
@@ -213,21 +228,54 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Vertical label */}
+      {/* Vertical label — right edge */}
       <div style={{
         position: "absolute",
         right: "40px",
         top: "50%",
         transform: "translateY(-50%) rotate(90deg)",
-        fontFamily: "var(--font-mono)",
+        fontFamily: "var(--font-display)",
         fontSize: "10px",
-        color: "var(--muted)",
-        letterSpacing: "0.3em",
+        fontWeight: 500,
+        color: "var(--muted-dim)",
+        letterSpacing: "0.12em",
         textTransform: "uppercase",
         zIndex: 10,
       }}>
         HARVER — DEBRIS — REMOVAL — T25
       </div>
+
+      {/* Video play/pause toggle — minimal */}
+      <button
+        onClick={toggleVideo}
+        aria-label={videoPaused ? "Play video" : "Pause video"}
+        style={{
+          position: "absolute",
+          bottom: "32px",
+          right: "32px",
+          zIndex: 20,
+          width: "36px",
+          height: "36px",
+          borderRadius: "50%",
+          border: "1px solid rgba(255,255,255,0.15)",
+          background: "rgba(0,0,0,0.4)",
+          color: "var(--white)",
+          fontSize: "12px",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          transition: "border-color 0.3s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
+        }}
+      >
+        {videoPaused ? "▶" : "⏸"}
+      </button>
 
       <DataTicker />
     </section>

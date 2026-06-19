@@ -56,16 +56,26 @@ const Technology = () => {
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
           <div className="section-label">CAPTURE TECHNOLOGY</div>
-          <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
+          <h2 style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "clamp(1.8rem, 4vw, 3rem)",
+            fontWeight: 700,
+            lineHeight: 1.05,
+            letterSpacing: "1.6px",
+            textTransform: "uppercase",
+            color: "var(--white)",
+            marginBottom: "16px",
+          }}>
             HARVER-CLAW<br />
-            <span className="shimmer-text">MARK III</span>
+            MARK III
           </h2>
           <p style={{
-            fontFamily: "var(--font-light)", fontWeight: 300,
+            fontFamily: "var(--font-body)",
+            fontWeight: 400,
             fontSize: "1.05rem",
-            color: "rgba(240,244,255,0.55)",
+            color: "var(--muted)",
             maxWidth: "560px",
-            lineHeight: 1.8,
+            lineHeight: 1.7,
             marginBottom: "80px",
           }}>
             Capturing a dead satellite is a kinetic nightmare. Without an active Attitude
@@ -82,11 +92,10 @@ const Technology = () => {
           border: "1px solid var(--border)",
           background: "var(--panel)",
         }}>
-          <div className="corner-bracket tl" />
-          <div className="corner-bracket br" />
           <img
             src="/images/satellite.jpg"
             alt="Harver-Claw capture system"
+            loading="lazy"
             style={{
               width: "100%",
               height: "420px",
@@ -100,7 +109,7 @@ const Technology = () => {
             bottom: 0,
             left: 0,
             right: 0,
-            height: "50%",
+            height: "40%",
             background: "linear-gradient(to top, var(--panel), transparent)",
             pointerEvents: "none",
           }} />
@@ -129,7 +138,8 @@ const Technology = () => {
                 fontSize: "1.4rem",
                 fontWeight: 700,
                 color: "var(--white)",
-                letterSpacing: "0.06em",
+                letterSpacing: "1.2px",
+                textTransform: "uppercase",
               }}>
                 HARVER-CLAW MK III
               </div>
@@ -154,9 +164,6 @@ const Technology = () => {
           position: "relative",
           overflow: "hidden",
         }}>
-          <div className="corner-bracket tl" />
-          <div className="corner-bracket br" />
-
           <div style={{
             fontFamily: "var(--font-mono)",
             fontSize: "11px",
@@ -187,27 +194,15 @@ const Technology = () => {
                   height: "64px",
                   margin: "0 auto 20px",
                   borderRadius: "50%",
-                  border: `2px solid ${ph.color}`,
+                  border: `1px solid ${ph.color}`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   fontFamily: "var(--font-mono)",
                   fontSize: "24px",
                   color: ph.color,
-                  position: "relative",
-                  animation: "energyPulse 3s ease-in-out infinite",
-                  animationDelay: `${i * 0.5}s`,
                 }}>
                   {ph.icon}
-                  <div style={{
-                    position: "absolute",
-                    inset: "-8px",
-                    borderRadius: "50%",
-                    border: `1px solid ${ph.color}`,
-                    opacity: 0.3,
-                    animation: "ripple 2s ease-out infinite",
-                    animationDelay: `${i * 0.5}s`,
-                  }} />
                 </div>
 
                 {/* Phase Label */}
@@ -217,6 +212,7 @@ const Technology = () => {
                   letterSpacing: "0.2em",
                   color: ph.color,
                   marginBottom: "8px",
+                  textTransform: "uppercase",
                 }}>
                   PHASE {ph.num}
                 </div>
@@ -225,19 +221,21 @@ const Technology = () => {
                 <div style={{
                   fontFamily: "var(--font-body)",
                   fontSize: "1.1rem",
-                  fontWeight: 600,
+                  fontWeight: 700,
                   color: "var(--white)",
                   marginBottom: "12px",
-                  letterSpacing: "0.05em",
+                  letterSpacing: "1.2px",
+                  textTransform: "uppercase",
                 }}>
                   {ph.name}
                 </div>
 
                 {/* Phase Detail */}
                 <p style={{
-                  fontFamily: "var(--font-light)",
+                  fontFamily: "var(--font-body)",
+                  fontWeight: 400,
                   fontSize: "0.85rem",
-                  color: "rgba(240,244,255,0.55)",
+                  color: "var(--muted)",
                   lineHeight: 1.7,
                   marginBottom: "20px",
                 }}>
@@ -248,15 +246,14 @@ const Technology = () => {
                 <div style={{
                   display: "flex",
                   flexDirection: "column",
-                  gap: "8px",
+                  gap: "0",
                 }}>
                   {ph.specs.map((spec, j) => (
                     <div key={j} style={{
                       display: "flex",
                       justifyContent: "space-between",
                       padding: "8px 12px",
-                      background: "rgba(0,0,0,0.3)",
-                      borderLeft: `2px solid ${ph.color}30`,
+                      borderBottom: j < ph.specs.length - 1 ? "1px solid var(--border)" : "none",
                     }}>
                       <span style={{
                         fontFamily: "var(--font-mono)",
@@ -285,8 +282,8 @@ const Technology = () => {
                     top: "50%",
                     transform: "translateY(-50%)",
                     width: "32px",
-                    height: "2px",
-                    background: "linear-gradient(90deg, var(--cyan), var(--gold))",
+                    height: "1px",
+                    background: "var(--border)",
                     zIndex: 2,
                   }}>
                     <div style={{
@@ -295,9 +292,9 @@ const Technology = () => {
                       top: "-4px",
                       width: 0,
                       height: 0,
-                      borderLeft: "8px solid var(--gold)",
-                      borderTop: "5px solid transparent",
-                      borderBottom: "5px solid transparent",
+                      borderLeft: "8px solid var(--border)",
+                      borderTop: "4px solid transparent",
+                      borderBottom: "4px solid transparent",
                     }} />
                   </div>
                 )}
@@ -309,26 +306,30 @@ const Technology = () => {
         {/* Technical Specifications + Compliance */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
           {/* Specs Panel */}
-          <div className="panel-card reveal reveal-delay-2" style={{ padding: "48px 40px" }}>
-            <div className="corner-bracket tr" />
+          <div className="reveal reveal-delay-2" style={{
+            padding: "48px 40px",
+            background: "var(--panel)",
+            border: "1px solid var(--border)",
+          }}>
             <h3 style={{
               fontFamily: "var(--font-mono)",
               fontSize: "11px",
               letterSpacing: "0.25em",
               color: "var(--cyan)",
               marginBottom: "32px",
+              textTransform: "uppercase",
             }}>
               TECHNICAL SPECIFICATIONS — MK III
             </h3>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
               {specs.map(([key, val], i) => (
                 <div key={i} style={{
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
                   padding: "14px 0",
-                  borderBottom: "1px solid rgba(0,212,255,0.06)",
+                  borderBottom: "1px solid var(--border)",
                 }}>
                   <span style={{
                     fontFamily: "var(--font-mono)",
@@ -352,14 +353,18 @@ const Technology = () => {
           </div>
 
           {/* Compliance + Performance Panel */}
-          <div className="panel-card reveal reveal-delay-3" style={{ padding: "48px 40px" }}>
-            <div className="corner-bracket bl" />
+          <div className="reveal reveal-delay-3" style={{
+            padding: "48px 40px",
+            background: "var(--panel)",
+            border: "1px solid var(--border)",
+          }}>
             <h3 style={{
               fontFamily: "var(--font-mono)",
               fontSize: "11px",
               letterSpacing: "0.25em",
               color: "var(--cyan)",
               marginBottom: "32px",
+              textTransform: "uppercase",
             }}>
               COMPLIANCE & PERFORMANCE
             </h3>
@@ -367,7 +372,7 @@ const Technology = () => {
             {/* Compliance Status */}
             <div style={{
               padding: "20px",
-              background: "rgba(0,255,136,0.04)",
+              background: "transparent",
               border: "1px solid rgba(0,255,136,0.15)",
               marginBottom: "24px",
             }}>
@@ -397,8 +402,9 @@ const Technology = () => {
                     <span style={{ color: "var(--success)", fontSize: "12px" }}>✓</span>
                     <span style={{
                       fontFamily: "var(--font-body)",
+                      fontWeight: 400,
                       fontSize: "0.85rem",
-                      color: "rgba(240,244,255,0.6)",
+                      color: "var(--muted)",
                     }}>
                       {item}
                     </span>
@@ -449,7 +455,6 @@ const Technology = () => {
                   <div style={{
                     height: "4px",
                     background: "rgba(0,212,255,0.1)",
-                    borderRadius: "2px",
                     overflow: "hidden",
                   }}>
                     <div
@@ -457,8 +462,7 @@ const Technology = () => {
                       style={{
                         width: metric.bar,
                         height: "100%",
-                        background: "linear-gradient(90deg, var(--cyan), var(--gold))",
-                        borderRadius: "2px",
+                        background: "var(--cyan)",
                         "--bar-width": metric.bar,
                       }}
                     />

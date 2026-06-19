@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#04060F"/>
+      <stop offset="100%" style="stop-color:#080C1A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00D4FF"/>
+      <stop offset="100%" style="stop-color:#C9A84C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <circle cx="900" cy="315" r="200" fill="none" stroke="#00D4FF" stroke-width="0.5" opacity="0.2"/>
+  <circle cx="900" cy="315" r="150" fill="none" stroke="#00D4FF" stroke-width="0.5" opacity="0.15"/>
+  <circle cx="900" cy="315" r="100" fill="none" stroke="#00D4FF" stroke-width="0.5" opacity="0.1"/>
+  <text x="80" y="220" font-family="monospace" font-size="14" fill="#00D4FF" letter-spacing="4">HARVER SPACE INDUSTRIES</text>
+  <text x="80" y="280" font-family="sans-serif" font-size="48" fill="#F0F4FF" font-weight="bold">ORBITAL</text>
+  <text x="80" y="340" font-family="sans-serif" font-size="48" fill="#F0F4FF" font-weight="bold">STEWARDSHIP</text>
+  <text x="80" y="400" font-family="monospace" font-size="16" fill="#6B7FA3">Debris Removal · Power Beaming · Legal Architecture</text>
+  <text x="80" y="560" font-family="monospace" font-size="12" fill="#6B7FA3">harverspace.com</text>
+  <circle cx="900" cy="315" r="6" fill="#00FF88"/>
+</svg>

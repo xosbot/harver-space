@@ -21,13 +21,6 @@ const news = [
   },
 ];
 
-const categoryColors = {
-  MISSION: "var(--cyan)",
-  LEGAL: "var(--gold)",
-  TECHNOLOGY: "#7b61ff",
-  FUNDING: "var(--success)",
-};
-
 const News = () => {
   const formatDate = (d) => {
     const dt = new Date(d);
@@ -43,34 +36,28 @@ const News = () => {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "1px",
-          background: "linear-gradient(90deg, transparent, var(--cyan), transparent)",
-          opacity: 0.4,
-        }}
-      />
-
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
           <div className="section-label">NEWS</div>
           <h2
             className="display-title"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}
+            style={{
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              lineHeight: 0.95,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
           >
             LATEST FROM<br />
             <span className="cyan-text">HARVER SPACE</span>
           </h2>
           <p
             style={{
-              fontFamily: "var(--font-light)",
-              fontWeight: 300,
+              fontFamily: "var(--font-body)",
+              fontWeight: 400,
               fontSize: "1.05rem",
-              color: "rgba(240,244,255,0.55)",
+              color: "var(--muted)",
               maxWidth: "560px",
               lineHeight: 1.8,
               marginBottom: "64px",
@@ -91,17 +78,17 @@ const News = () => {
           {news.map((item, i) => (
             <div
               key={i}
-              className="panel-card reveal hover-glow"
+              className="panel-card reveal"
               style={{
                 padding: "36px",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                border: "1px solid var(--border)",
+                background: "transparent",
               }}
             >
               <div>
-                <div className="corner-bracket tl" style={{ borderColor: categoryColors[item.category] || "var(--cyan)" }} />
-
                 <div
                   style={{
                     display: "flex",
@@ -113,6 +100,8 @@ const News = () => {
                   <div
                     className="mono-data"
                     style={{
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 400,
                       fontSize: "10px",
                       color: "var(--muted)",
                       letterSpacing: "0.1em",
@@ -123,12 +112,14 @@ const News = () => {
                   <div
                     className="mono-data"
                     style={{
+                      fontFamily: "var(--font-body)",
+                      fontWeight: 400,
                       fontSize: "9px",
-                      color: categoryColors[item.category] || "var(--cyan)",
+                      color: "var(--muted)",
                       letterSpacing: "0.15em",
                       padding: "3px 10px",
-                      border: `1px solid ${categoryColors[item.category] || "var(--cyan)"}`,
-                      background: "rgba(0,212,255,0.04)",
+                      border: "1px solid var(--border)",
+                      background: "transparent",
                     }}
                   >
                     {item.category}
@@ -139,7 +130,7 @@ const News = () => {
                   style={{
                     fontFamily: "var(--font-body)",
                     fontSize: "1.05rem",
-                    fontWeight: 600,
+                    fontWeight: 400,
                     color: "var(--white)",
                     lineHeight: 1.5,
                     letterSpacing: "0.02em",
@@ -156,10 +147,16 @@ const News = () => {
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "11px",
-                  color: "var(--cyan)",
+                  color: "var(--white)",
                   letterSpacing: "0.15em",
                   textDecoration: "none",
                   transition: "opacity 0.2s",
+                  border: "1px solid var(--white)",
+                  background: "transparent",
+                  borderRadius: "32px",
+                  padding: "8px 20px",
+                  display: "inline-block",
+                  width: "fit-content",
                 }}
                 onMouseEnter={(e) => (e.target.style.opacity = "0.7")}
                 onMouseLeave={(e) => (e.target.style.opacity = "1")}

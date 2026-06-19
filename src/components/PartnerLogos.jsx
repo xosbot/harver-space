@@ -1,10 +1,10 @@
 const partners = [
-  { name: "JAXA", country: "Japan" },
-  { name: "ESA", country: "Europe" },
-  { name: "FAA/AST", country: "USA" },
-  { name: "UAE Space Agency", country: "UAE" },
-  { name: "UK Space Agency", country: "UK" },
-  { name: "UNOOSA", country: "United Nations" },
+  { name: "JAXA", region: "Japan Aerospace Exploration Agency", color: "#003399" },
+  { name: "ESA", region: "European Space Agency", color: "#003D7C" },
+  { name: "FAA/AST", region: "Federal Aviation Administration", color: "#C4122F" },
+  { name: "UAE-SA", region: "UAE Space Agency", color: "#FFD700" },
+  { name: "UKSA", region: "UK Space Agency", color: "#1E3A5F" },
+  { name: "UNOOSA", region: "UN Office for Outer Space Affairs", color: "#4B92DB" },
 ];
 
 const PartnerLogos = () => {
@@ -14,7 +14,7 @@ const PartnerLogos = () => {
     <section
       style={{
         padding: "80px 0",
-        background: "var(--deep)",
+        background: "var(--black)",
         borderTop: "1px solid var(--border)",
         borderBottom: "1px solid var(--border)",
         overflow: "hidden",
@@ -26,7 +26,12 @@ const PartnerLogos = () => {
           <div className="section-label">PARTNERS</div>
           <h2
             className="display-title"
-            style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)" }}
+            style={{
+              fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)",
+              lineHeight: 0.95,
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
+            }}
           >
             AGENCIES & REGULATORS WE WORK WITH
           </h2>
@@ -36,7 +41,7 @@ const PartnerLogos = () => {
       <div
         style={{
           display: "flex",
-          gap: "64px",
+          gap: "24px",
           width: "max-content",
           animation: "marquee 30s linear infinite",
         }}
@@ -46,47 +51,54 @@ const PartnerLogos = () => {
             key={i}
             style={{
               flex: "0 0 auto",
+              width: "140px",
+              height: "60px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "8px",
-              minWidth: "160px",
+              justifyContent: "center",
+              gap: "2px",
+              border: "1px solid var(--border)",
+              background: "transparent",
+              filter: "grayscale(1)",
+              transition: "all 0.3s ease",
               cursor: "default",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.querySelector(".partner-logo").style.filter = "grayscale(0)";
-              e.currentTarget.querySelector(".partner-logo").style.color = "var(--cyan)";
+              e.currentTarget.style.borderColor = "var(--white)";
+              e.currentTarget.style.filter = "grayscale(0)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.querySelector(".partner-logo").style.filter = "grayscale(1)";
-              e.currentTarget.querySelector(".partner-logo").style.color = "rgba(240,244,255,0.3)";
+              e.currentTarget.style.borderColor = "var(--border)";
+              e.currentTarget.style.filter = "grayscale(1)";
             }}
           >
-            <div
-              className="partner-logo"
+            <span
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "1.4rem",
+                fontSize: "0.85rem",
                 fontWeight: 700,
                 letterSpacing: "0.15em",
-                color: "rgba(240,244,255,0.3)",
-                filter: "grayscale(1)",
-                transition: "all 0.3s ease",
-                textTransform: "uppercase",
+                color: "var(--white)",
+                lineHeight: 1,
               }}
             >
               {p.name}
-            </div>
-            <div
-              className="mono-data"
+            </span>
+            <span
               style={{
-                fontSize: "9px",
+                fontFamily: "var(--font-body)",
+                fontWeight: 400,
+                fontSize: "6px",
                 color: "var(--muted)",
-                letterSpacing: "0.2em",
+                letterSpacing: "0.05em",
+                textTransform: "uppercase",
+                textAlign: "center",
+                lineHeight: 1.2,
               }}
             >
-              {p.country}
-            </div>
+              {p.region}
+            </span>
           </div>
         ))}
       </div>

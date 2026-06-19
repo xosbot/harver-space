@@ -2,11 +2,13 @@ const Footer = () => {
   const linkCol = (title, links) => (
     <div>
       <div
-        className="mono-data"
         style={{
-          fontSize: "10px",
-          color: "var(--cyan)",
+          fontFamily: "var(--font-display)",
+          fontSize: "11px",
+          fontWeight: 700,
+          color: "var(--muted)",
           letterSpacing: "0.2em",
+          textTransform: "uppercase",
           marginBottom: "16px",
         }}
       >
@@ -16,18 +18,20 @@ const Footer = () => {
         <a
           key={j}
           href="#"
-          className="nav-link"
           style={{
             display: "block",
-            fontFamily: "var(--font-light)",
-            fontSize: "0.9rem",
-            color: "rgba(240,244,255,0.4)",
+            fontFamily: "var(--font-body)",
+            fontSize: "13px",
+            fontWeight: 400,
+            color: "var(--muted-dim)",
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
             marginBottom: "10px",
             textDecoration: "none",
             transition: "color 0.2s",
           }}
           onMouseEnter={(e) => (e.target.style.color = "var(--white)")}
-          onMouseLeave={(e) => (e.target.style.color = "rgba(240,244,255,0.4)")}
+          onMouseLeave={(e) => (e.target.style.color = "var(--muted-dim)")}
         >
           {link}
         </a>
@@ -39,7 +43,7 @@ const Footer = () => {
     <footer
       style={{
         padding: "60px 40px 40px",
-        background: "var(--deep)",
+        background: "var(--black)",
         borderTop: "1px solid var(--border)",
         position: "relative",
       }}
@@ -61,20 +65,21 @@ const Footer = () => {
                 style={{
                   width: "28px",
                   height: "28px",
-                  border: "1.5px solid var(--cyan)",
+                  border: "1.5px solid var(--white)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <div style={{ width: "10px", height: "10px", background: "var(--cyan)" }} />
+                <div style={{ width: "10px", height: "10px", background: "var(--white)" }} />
               </div>
               <span
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "12px",
-                  fontWeight: 700,
+                  fontSize: "14px",
+                  fontWeight: 800,
                   letterSpacing: "0.25em",
+                  textTransform: "uppercase",
                 }}
               >
                 HARVER SPACE
@@ -82,11 +87,11 @@ const Footer = () => {
             </div>
             <p
               style={{
-                fontFamily: "var(--font-light)",
-                fontSize: "0.85rem",
-                color: "rgba(240,244,255,0.4)",
+                fontFamily: "var(--font-body)",
+                fontSize: "13px",
+                color: "var(--muted-dim)",
                 lineHeight: 1.7,
-                fontWeight: 300,
+                fontWeight: 400,
                 marginBottom: "24px",
               }}
             >
@@ -95,14 +100,14 @@ const Footer = () => {
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <div className="mono-data" style={{ fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                📍 Sector 62, Noida, UP 201301, India
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
+                SECTOR 62, NOIDA, UP 201301, INDIA
               </div>
-              <div className="mono-data" style={{ fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                ✉ contact@harverspace.com
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
+                CONTACT@HARVERSPACE.COM
               </div>
-              <div className="mono-data" style={{ fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                ☎ +91 120 456 7890
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
+                +91 120 456 7890
               </div>
             </div>
           </div>
@@ -110,7 +115,7 @@ const Footer = () => {
           {/* 4-Column Links */}
           {linkCol("COMPANY", ["About HSI", "Roadmap", "Market", "Aashrayam", "Careers"])}
           {linkCol("TECHNOLOGY", ["Debris Removal", "Power Beaming", "ONE THING OS", "SV-1 Vessel"])}
-          {linkCol("RESOURCES", ["Medium Dispatch", "Press Kit", "Partner With Us", "Contact"])}
+          {linkCol("RESOURCES", ["Medium Dispatch", "Press Kit", "Newsletter", "Partner With Us", "Contact"])}
           {linkCol("LEGAL", ["Privacy Policy", "Terms of Service", "Legal Framework", "BTL Framework"])}
         </div>
 
@@ -122,7 +127,7 @@ const Footer = () => {
             gap: "32px",
             marginBottom: "32px",
             paddingBottom: "32px",
-            borderBottom: "1px solid rgba(0,212,255,0.08)",
+            borderBottom: "1px solid var(--border)",
           }}
         >
           {[
@@ -136,16 +141,17 @@ const Footer = () => {
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-link"
               style={{
-                fontFamily: "var(--font-mono)",
+                fontFamily: "var(--font-display)",
                 fontSize: "11px",
+                fontWeight: 500,
                 color: "var(--muted)",
                 letterSpacing: "0.1em",
+                textTransform: "uppercase",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
-              onMouseEnter={(e) => (e.target.style.color = "var(--cyan)")}
+              onMouseEnter={(e) => (e.target.style.color = "var(--white)")}
               onMouseLeave={(e) => (e.target.style.color = "var(--muted)")}
             >
               {s.name}
@@ -162,18 +168,16 @@ const Footer = () => {
             marginBottom: "32px",
           }}
         >
-          {["ISO 27001", "SOC 2 Type II", "GDPR Compliant"].map((badge, i) => (
+          {["ISO 27001", "SOC 2 TYPE II", "GDPR COMPLIANT"].map((badge, i) => (
             <div
               key={i}
-              className="panel-card"
               style={{
-                padding: "6px 16px",
-                fontSize: "9px",
                 fontFamily: "var(--font-mono)",
-                color: "var(--cyan)",
+                fontSize: "9px",
+                fontWeight: 400,
+                color: "var(--muted)",
                 letterSpacing: "0.15em",
-                border: "1px solid rgba(0,212,255,0.15)",
-                background: "rgba(0,212,255,0.03)",
+                textTransform: "uppercase",
               }}
             >
               {badge}
@@ -184,7 +188,7 @@ const Footer = () => {
         {/* Bottom Row */}
         <div
           style={{
-            borderTop: "1px solid rgba(0,212,255,0.08)",
+            borderTop: "1px solid var(--border)",
             paddingTop: "24px",
             display: "flex",
             justifyContent: "space-between",
@@ -194,17 +198,21 @@ const Footer = () => {
           }}
         >
           <div
-            className="mono-data"
-            style={{ fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "10px",
+              color: "var(--muted-dim)",
+              letterSpacing: "0.1em",
+            }}
           >
             © 2026 HARVER SPACE INDUSTRIES — ALL RIGHTS RESERVED
           </div>
 
           <div
-            className="mono-data"
             style={{
+              fontFamily: "var(--font-mono)",
               fontSize: "10px",
-              color: "var(--cyan)",
+              color: "var(--success)",
               letterSpacing: "0.1em",
               animation: "blink 3s ease-in-out infinite",
             }}

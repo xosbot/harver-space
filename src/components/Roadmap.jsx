@@ -43,53 +43,92 @@ const Roadmap = () => {
   ];
 
   return (
-    <section id="roadmap" style={{ padding: "120px 40px", background: "var(--deep)" }}>
+    <section id="roadmap" style={{ padding: "120px 40px", background: "var(--black)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
           <div className="section-label">ROADMAP</div>
-          <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
-            2026–2030:<br />
-            <span className="cyan-text">THE CLEANUP BEGINS</span>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(1.8rem, 4vw, 3rem)",
+              fontWeight: 800,
+              textTransform: "uppercase",
+              lineHeight: 0.95,
+              letterSpacing: "0.08em",
+              color: "var(--white)",
+              marginBottom: "16px",
+            }}
+          >
+            2026–2030:
+            <br />
+            <span style={{ color: "var(--cyan)" }}>THE CLEANUP BEGINS</span>
           </h2>
-          <p style={{
-            fontFamily: "var(--font-light)", fontWeight: 300,
-            fontSize: "1.05rem",
-            color: "rgba(240,244,255,0.55)",
-            maxWidth: "560px",
-            lineHeight: 1.8,
-            marginBottom: "48px",
-          }}>
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontWeight: 400,
+              fontSize: "1.05rem",
+              color: "var(--muted)",
+              maxWidth: "560px",
+              lineHeight: 1.7,
+              marginBottom: "48px",
+            }}
+          >
             A phased execution plan that transforms orbital cleanup from theoretical
             necessity into commercially viable, legally authorized service.
           </p>
         </div>
 
         {/* Mission Image */}
-        <div className="reveal" style={{ marginBottom: "80px", position: "relative", overflow: "hidden" }}>
-          <div className="panel-card" style={{ padding: "0", overflow: "hidden" }}>
-            <div className="corner-bracket tl" />
-            <div className="corner-bracket br" />
+        <div
+          className="reveal"
+          style={{ marginBottom: "80px", position: "relative", overflow: "hidden" }}
+        >
+          <div
+            style={{
+              border: "1px solid var(--border)",
+              padding: 0,
+              overflow: "hidden",
+            }}
+          >
             <img
               src="/images/rocket-launch.jpg"
               alt="Mission launch"
+              loading="lazy"
               style={{
                 width: "100%",
                 height: "320px",
                 objectFit: "cover",
                 display: "block",
-                filter: "brightness(0.7) saturate(1.2)",
               }}
             />
-            <div style={{
-              position: "absolute",
-              bottom: 0, left: 0, right: 0,
-              padding: "32px 40px",
-              background: "linear-gradient(to top, rgba(8,12,26,0.95) 0%, transparent 100%)",
-            }}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "8px" }}>
+            <div
+              style={{
+                padding: "24px 32px",
+                borderTop: "1px solid var(--border)",
+              }}
+            >
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "10px",
+                  color: "var(--cyan)",
+                  letterSpacing: "0.2em",
+                  marginBottom: "8px",
+                }}
+              >
                 MISSION CONTROL — FIRST LAUNCH WINDOW
               </div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem", fontWeight: 700, color: "var(--white)" }}>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.3rem",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  color: "var(--white)",
+                }}
+              >
                 VESPA CAPTURE MISSION — Q4 2026
               </div>
             </div>
@@ -99,80 +138,131 @@ const Roadmap = () => {
         {/* Timeline */}
         <div style={{ position: "relative" }}>
           {/* Vertical line */}
-          <div style={{
-            position: "absolute",
-            left: "110px",
-            top: "0", bottom: "0",
-            width: "1px",
-            background: "linear-gradient(to bottom, var(--cyan), rgba(0,212,255,0.1))",
-          }} />
+          <div
+            style={{
+              position: "absolute",
+              left: "110px",
+              top: "0",
+              bottom: "0",
+              width: "1px",
+              borderLeft: "1px solid var(--border)",
+            }}
+          />
 
           {milestones.map((m, i) => (
-            <div key={i} className={`reveal reveal-delay-${i + 1}`} style={{
-              display: "flex",
-              gap: "40px",
-              marginBottom: i < milestones.length - 1 ? "48px" : "0",
-              alignItems: "flex-start",
-            }}>
+            <div
+              key={i}
+              className={`reveal reveal-delay-${i + 1}`}
+              style={{
+                display: "flex",
+                gap: "40px",
+                marginBottom: i < milestones.length - 1 ? "48px" : "0",
+                alignItems: "flex-start",
+              }}
+            >
               {/* Year */}
-              <div style={{
-                width: "80px",
-                flexShrink: 0,
-                textAlign: "right",
-              }}>
-                <div style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.5rem",
-                  fontWeight: 700,
-                  color: m.color,
-                  lineHeight: 1,
-                }}>{m.year}</div>
+              <div
+                style={{
+                  width: "80px",
+                  flexShrink: 0,
+                  textAlign: "right",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.5rem",
+                    fontWeight: 800,
+                    color: "var(--cyan)",
+                    lineHeight: 1,
+                    letterSpacing: "0.05em",
+                  }}
+                >
+                  {m.year}
+                </div>
               </div>
 
               {/* Dot */}
               <div style={{ position: "relative", flexShrink: 0, paddingTop: "4px" }}>
-                <div className="timeline-dot" style={{
-                  width: "20px", height: "20px",
-                  borderRadius: "50%",
-                  background: m.color,
-                  border: "3px solid var(--deep)",
-                  boxShadow: `0 0 16px ${m.color}`,
-                  position: "relative",
-                  zIndex: 2,
-                }} />
+                <div
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    borderRadius: "50%",
+                    background: "var(--cyan)",
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                />
               </div>
 
               {/* Content */}
-              <div className="panel-card hover-glow" style={{ flex: 1, padding: "32px 36px" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px" }}>
+              <div
+                style={{
+                  flex: 1,
+                  padding: "32px 36px",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    marginBottom: "12px",
+                  }}
+                >
                   <div>
-                    <span className="mono-data" style={{ fontSize: "10px", color: m.color, letterSpacing: "0.2em", marginRight: "16px" }}>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "10px",
+                        color: m.color,
+                        letterSpacing: "0.2em",
+                        marginRight: "16px",
+                      }}
+                    >
                       {m.tag}
                     </span>
                   </div>
-                  <span style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "10px",
-                    padding: "4px 10px",
-                    border: `1px solid ${m.color}`,
-                    color: m.color,
-                    letterSpacing: "0.15em",
-                  }}>{m.status}</span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "10px",
+                      padding: "4px 10px",
+                      border: "1px solid var(--border)",
+                      color: "var(--muted)",
+                      letterSpacing: "0.15em",
+                    }}
+                  >
+                    {m.status}
+                  </span>
                 </div>
-                <h3 style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "1.2rem",
-                  fontWeight: 600,
-                  color: "var(--white)",
-                  letterSpacing: "0.05em",
-                  marginBottom: "12px",
-                }}>{m.title}</h3>
-                <p style={{
-                  fontFamily: "var(--font-light)", fontWeight: 300,
-                  fontSize: "0.95rem",
-                  color: "rgba(240,244,255,0.6)",
-                  lineHeight: 1.8,
-                }}>{m.body}</p>
+                <h3
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "1.2rem",
+                    fontWeight: 600,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.06em",
+                    lineHeight: 0.95,
+                    color: "var(--white)",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {m.title}
+                </h3>
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 400,
+                    fontSize: "0.95rem",
+                    color: "var(--muted)",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {m.body}
+                </p>
               </div>
             </div>
           ))}

@@ -35,7 +35,7 @@ const Nav = () => {
 
   return (
     <>
-      <nav style={{
+      <nav aria-label="Main navigation" style={{
         position: "fixed",
         top: 0, left: 0, right: 0,
         zIndex: 1000,
@@ -44,10 +44,10 @@ const Nav = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        background: scrolled ? "rgba(4,6,15,0.92)" : "transparent",
+        background: scrolled ? "rgba(0,0,0,0.9)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
         transition: "all 0.4s ease",
       }}>
         {/* Logo */}
@@ -56,30 +56,32 @@ const Nav = () => {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <span style={{
-            fontFamily: "Syncopate, var(--font-display)",
-            fontSize: "16px",
-            fontWeight: 700,
+            fontFamily: "var(--font-display)",
+            fontSize: "14px",
+            fontWeight: 800,
             letterSpacing: "0.18em",
             color: "var(--white)",
+            textTransform: "uppercase",
           }}>HARVER</span>
           <span style={{
-            fontFamily: "Syncopate, var(--font-display)",
-            fontSize: "16px",
-            fontWeight: 700,
+            fontFamily: "var(--font-display)",
+            fontSize: "14px",
+            fontWeight: 800,
             letterSpacing: "0.18em",
             color: "var(--cyan)",
-            marginLeft: "6px",
+            marginLeft: "4px",
+            textTransform: "uppercase",
           }}>SPACE</span>
         </div>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav — uppercase micro text */}
         <div className="hide-mobile" style={{ display: "flex", gap: "32px", alignItems: "center" }}>
           {navLinks.map(([id, label]) => (
             <span key={id} className="nav-link" onClick={() => scrollTo(id)}>{label}</span>
           ))}
           <button
             className="btn-primary"
-            style={{ padding: "8px 20px", fontSize: "10px" }}
+            style={{ padding: "10px 24px", fontSize: "11px" }}
             onClick={() => scrollTo("contact")}
           >
             Partner With Us
@@ -93,13 +95,14 @@ const Nav = () => {
           style={{
             display: "none",
             background: "none",
-            border: "1px solid var(--border)",
-            color: "var(--cyan)",
-            fontSize: "18px",
+            border: "1px solid rgba(255,255,255,0.15)",
+            color: "var(--white)",
+            fontSize: "16px",
             cursor: "pointer",
-            fontFamily: "var(--font-mono)",
+            fontFamily: "var(--font-display)",
             padding: "6px 10px",
             lineHeight: 1,
+            borderRadius: "2px",
           }}
         >
           {menuOpen ? "✕" : "☰"}
@@ -114,10 +117,10 @@ const Nav = () => {
         width: "75vw",
         maxWidth: "320px",
         height: "100vh",
-        background: "rgba(4,6,15,0.98)",
+        background: "rgba(0,0,0,0.98)",
         backdropFilter: "blur(30px)",
         WebkitBackdropFilter: "blur(30px)",
-        borderLeft: "1px solid var(--border)",
+        borderLeft: "1px solid rgba(255,255,255,0.06)",
         zIndex: 999,
         display: "flex",
         flexDirection: "column",
@@ -131,14 +134,14 @@ const Nav = () => {
             key={id}
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "14px",
+              fontSize: "12px",
               fontWeight: 600,
-              letterSpacing: "0.2em",
-              color: "var(--white)",
+              letterSpacing: "0.12em",
+              color: "var(--muted)",
               cursor: "pointer",
               textTransform: "uppercase",
               padding: "18px 0",
-              borderBottom: "1px solid rgba(255,255,255,0.06)",
+              borderBottom: "1px solid rgba(255,255,255,0.04)",
               opacity: menuOpen ? 1 : 0,
               transform: menuOpen ? "translateX(0)" : "translateX(20px)",
               transition: `opacity 0.3s ease ${i * 0.05}s, transform 0.3s ease ${i * 0.05}s`,
@@ -152,7 +155,7 @@ const Nav = () => {
           className="btn-primary"
           style={{
             marginTop: "32px",
-            padding: "12px 24px",
+            padding: "14px 24px",
             fontSize: "11px",
             width: "100%",
             opacity: menuOpen ? 1 : 0,
@@ -171,7 +174,7 @@ const Nav = () => {
           style={{
             position: "fixed",
             inset: 0,
-            background: "rgba(0,0,0,0.5)",
+            background: "rgba(0,0,0,0.6)",
             zIndex: 998,
           }}
           onClick={() => setMenuOpen(false)}

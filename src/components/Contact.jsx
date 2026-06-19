@@ -21,23 +21,28 @@ const Contact = () => {
 
   const inputStyle = {
     width: "100%",
-    background: "var(--black)",
-    border: "1px solid var(--border)",
+    background: "transparent",
+    border: "1px solid #3a3a3f",
     padding: "12px 16px",
-    color: "var(--white)",
-    fontFamily: "var(--font-mono)",
-    fontSize: "13px",
+    color: "#ffffff",
+    fontFamily: "var(--font-body)",
+    fontSize: "16px",
+    fontWeight: 400,
+    letterSpacing: "0.32px",
+    lineHeight: 1.5,
     outline: "none",
-    transition: "border-color 0.2s",
   };
 
   const labelStyle = {
     fontFamily: "var(--font-mono)",
     fontSize: "10px",
-    color: "var(--muted)",
-    letterSpacing: "0.2em",
+    color: "#5a5a5f",
+    letterSpacing: "0.96px",
+    textTransform: "uppercase",
     display: "block",
     marginBottom: "8px",
+    lineHeight: 2.0,
+    fontWeight: 400,
   };
 
   const fieldWrap = { marginBottom: "20px" };
@@ -47,45 +52,50 @@ const Contact = () => {
       id="contact"
       style={{
         padding: "120px 40px",
-        background: "var(--black)",
+        background: "#000000",
         position: "relative",
-        backgroundImage: "url('/images/earth-atmosphere.jpg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundBlendMode: "overlay",
-        backgroundColor: "rgba(5,7,15,0.92)",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "1px",
-          background: "linear-gradient(90deg, transparent, var(--cyan), transparent)",
-          opacity: 0.4,
-        }}
-      />
-
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
-          <div className="section-label">CONTACT</div>
+          <div
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "12px",
+              fontWeight: 400,
+              color: "#5a5a5f",
+              letterSpacing: "0.96px",
+              lineHeight: 2.0,
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            CONTACT
+          </div>
           <h2
-            className="display-title"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(48px, 4vw, 60px)",
+              fontWeight: 700,
+              lineHeight: 1.2,
+              letterSpacing: "1.2px",
+              textTransform: "uppercase",
+              color: "#ffffff",
+              margin: "0 0 16px 0",
+            }}
           >
             PARTNER WITH US
           </h2>
           <p
             style={{
-              fontFamily: "var(--font-light)",
-              fontWeight: 300,
-              fontSize: "1.05rem",
-              color: "rgba(240,244,255,0.55)",
+              fontFamily: "var(--font-body)",
+              fontWeight: 400,
+              fontSize: "16px",
+              color: "#5a5a5f",
               maxWidth: "560px",
-              lineHeight: 1.8,
-              marginBottom: "80px",
+              lineHeight: 1.7,
+              letterSpacing: "0.32px",
+              margin: "0 0 80px 0",
             }}
           >
             We engage investors, satellite operators, space agencies, and sovereign
@@ -101,33 +111,37 @@ const Contact = () => {
                 tag: "INVESTOR RELATIONS",
                 title: "Phase I Capital",
                 body: "We are raising seed capital for Phase I operations. Qualified investors interested in the orbital stewardship economy are invited to begin a conversation.",
-                color: "var(--cyan)",
               },
               {
                 tag: "PARTNERSHIP INQUIRIES",
                 title: "Sovereign Authorization",
                 body: "If you represent a space agency, satellite operator, or national authority with debris removal requirements, contact our partnerships team directly.",
-                color: "var(--gold)",
               },
               {
                 tag: "HEADQUARTERS",
                 title: "Delhi NCR, India",
                 body: "Harver Space Industries Pvt. Ltd.\nSector 62, Noida, Uttar Pradesh 201301\nIndia",
-                color: "var(--cyan)",
               },
             ].map((t, i) => (
               <div
                 key={i}
-                className="panel-card reveal hover-glow"
-                style={{ padding: "36px", flex: 1 }}
+                className="reveal"
+                style={{
+                  padding: "36px",
+                  flex: 1,
+                  background: "#0a0a0a",
+                  borderBottom: "1px solid #3a3a3f",
+                }}
               >
-                <div className="corner-bracket tl" style={{ borderColor: t.color }} />
                 <div
-                  className="mono-data"
                   style={{
+                    fontFamily: "var(--font-mono)",
                     fontSize: "10px",
-                    color: t.color,
-                    letterSpacing: "0.2em",
+                    fontWeight: 400,
+                    color: "#5a5a5f",
+                    letterSpacing: "0.96px",
+                    textTransform: "uppercase",
+                    lineHeight: 2.0,
                     marginBottom: "12px",
                   }}
                 >
@@ -137,22 +151,25 @@ const Contact = () => {
                   style={{
                     fontFamily: "var(--font-body)",
                     fontSize: "1.1rem",
-                    fontWeight: 600,
-                    color: "var(--white)",
+                    fontWeight: 700,
+                    color: "#ffffff",
                     marginBottom: "12px",
-                    letterSpacing: "0.05em",
+                    letterSpacing: "0.32px",
+                    lineHeight: 1.5,
                   }}
                 >
                   {t.title}
                 </h3>
                 <p
                   style={{
-                    fontFamily: "var(--font-light)",
-                    fontWeight: 300,
-                    fontSize: "0.95rem",
-                    color: "rgba(240,244,255,0.6)",
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 400,
+                    fontSize: "16px",
+                    color: "#5a5a5f",
                     lineHeight: 1.7,
+                    letterSpacing: "0.32px",
                     whiteSpace: "pre-line",
+                    margin: 0,
                   }}
                 >
                   {t.body}
@@ -163,19 +180,20 @@ const Contact = () => {
 
           {/* Form */}
           <div
-            className="panel-card reveal reveal-delay-2"
-            style={{ padding: "48px 40px" }}
+            className="reveal reveal-delay-2"
+            style={{
+              padding: "48px 40px",
+              background: "#0a0a0a",
+              borderLeft: "1px solid #3a3a3f",
+            }}
           >
-            <div className="corner-bracket tr" />
-            <div className="corner-bracket bl" />
-
             {sent ? (
               <div style={{ textAlign: "center", padding: "40px 0" }}>
                 <div
                   style={{
                     fontSize: "3rem",
                     marginBottom: "16px",
-                    color: "var(--success)",
+                    color: "#ffffff",
                   }}
                 >
                   ✓
@@ -184,8 +202,10 @@ const Contact = () => {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "1.2rem",
-                    color: "var(--success)",
-                    letterSpacing: "0.1em",
+                    fontWeight: 700,
+                    color: "#ffffff",
+                    letterSpacing: "1.17px",
+                    textTransform: "uppercase",
                     marginBottom: "12px",
                   }}
                 >
@@ -193,9 +213,12 @@ const Contact = () => {
                 </div>
                 <p
                   style={{
-                    fontFamily: "var(--font-light)",
-                    fontWeight: 300,
-                    color: "rgba(240,244,255,0.6)",
+                    fontFamily: "var(--font-body)",
+                    fontWeight: 400,
+                    fontSize: "16px",
+                    color: "#5a5a5f",
+                    letterSpacing: "0.32px",
+                    margin: 0,
                   }}
                 >
                   Our team will be in contact within 48 hours.
@@ -204,11 +227,14 @@ const Contact = () => {
             ) : (
               <form onSubmit={handleSubmit}>
                 <div
-                  className="mono-data"
                   style={{
-                    fontSize: "11px",
-                    color: "var(--muted)",
-                    letterSpacing: "0.2em",
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "12px",
+                    fontWeight: 400,
+                    color: "#5a5a5f",
+                    letterSpacing: "0.96px",
+                    textTransform: "uppercase",
+                    lineHeight: 2.0,
                     marginBottom: "32px",
                   }}
                 >
@@ -231,8 +257,6 @@ const Contact = () => {
                         onChange={(e) => update(f.key, e.target.value)}
                         required
                         style={inputStyle}
-                        onFocus={(e) => (e.target.style.borderColor = "var(--cyan)")}
-                        onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                       />
                     </div>
                   ))}
@@ -265,8 +289,6 @@ const Contact = () => {
                     onChange={(e) => update("subject", e.target.value)}
                     required
                     style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = "var(--cyan)")}
-                    onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                   />
                 </div>
 
@@ -280,17 +302,30 @@ const Contact = () => {
                     required
                     style={{
                       ...inputStyle,
-                      fontFamily: "var(--font-light)",
-                      fontSize: "14px",
                       resize: "vertical",
                     }}
-                    onFocus={(e) => (e.target.style.borderColor = "var(--cyan)")}
-                    onBlur={(e) => (e.target.style.borderColor = "var(--border)")}
                   />
                 </div>
 
-                <button type="submit" className="btn-primary" style={{ width: "100%" }}>
-                  TRANSMIT INQUIRY →
+                <button
+                  type="submit"
+                  style={{
+                    width: "100%",
+                    background: "transparent",
+                    border: "1px solid #ffffff",
+                    borderRadius: "32px",
+                    color: "#ffffff",
+                    fontFamily: "var(--font-body)",
+                    fontSize: "13px",
+                    fontWeight: 700,
+                    letterSpacing: "1.17px",
+                    textTransform: "uppercase",
+                    lineHeight: 0.94,
+                    padding: "18px 24px",
+                    cursor: "pointer",
+                  }}
+                >
+                  TRANSMIT INQUIRY
                 </button>
               </form>
             )}
