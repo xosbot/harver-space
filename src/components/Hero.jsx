@@ -1,6 +1,10 @@
 import OrbitalCanvas from "./OrbitalCanvas";
 import DataTicker from "./DataTicker";
 
+// Set VIDEO_BG to a real mp4 URL to enable video background.
+// Leave empty "" to fall back to the OrbitalCanvas WebGL animation.
+const VIDEO_BG = "";
+
 const Hero = () => (
   <section id="hero" style={{
     position: "relative",
@@ -11,14 +15,32 @@ const Hero = () => (
     display: "flex",
     alignItems: "center",
   }}>
-    <OrbitalCanvas />
+    {VIDEO_BG ? (
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: "absolute", inset: 0,
+          width: "100%", height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+        }}
+      >
+        <source src={VIDEO_BG} type="video/mp4" />
+      </video>
+    ) : (
+      <OrbitalCanvas />
+    )}
 
     <div style={{
       position: "absolute", inset: 0,
-      background: "linear-gradient(135deg, rgba(4,6,15,0.85) 0%, rgba(4,6,15,0.4) 50%, rgba(4,6,15,0.7) 100%)",
+      background: "linear-gradient(135deg, rgba(4,6,15,0.88) 0%, rgba(4,6,15,0.45) 50%, rgba(4,6,15,0.75) 100%)",
+      zIndex: 1,
     }} />
 
-    <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.5 }} />
+    <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.5, zIndex: 1 }} />
 
     <div style={{
       position: "relative", zIndex: 10,
@@ -70,8 +92,8 @@ const Hero = () => (
         fontWeight: 300,
       }}>
         Harver Space Industries operates at the intersection of sovereign law,
-        precision engineering, and orbital stewardship. The debris problem is
-        civilizational. The solution is us.
+        precision engineering, and orbital stewardship. We remove debris. We beam power.
+        We build the grid above the grid.
       </p>
 
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
@@ -93,7 +115,7 @@ const Hero = () => (
         gap: "32px",
         flexWrap: "wrap",
       }}>
-        <span>LEO OPERATIONS: 400–800 KM ALTITUDE</span>
+        <span>LEO OPERATIONS: 400–1000 KM ALTITUDE</span>
         <span>|</span>
         <span>CLEARANCE: FAA/AST · ESA · JAXA · UAE</span>
         <span>|</span>
@@ -111,6 +133,7 @@ const Hero = () => (
       color: "var(--muted)",
       letterSpacing: "0.3em",
       textTransform: "uppercase",
+      zIndex: 10,
     }}>
       HARVER — DEBRIS — REMOVAL — T25
     </div>

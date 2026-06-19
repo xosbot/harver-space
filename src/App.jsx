@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Problem from "./components/Problem";
 import Solution from "./components/Solution";
 import Technology from "./components/Technology";
+import PowerGrid from "./components/PowerGrid";
 import Legal from "./components/Legal";
 import Roadmap from "./components/Roadmap";
 import Market from "./components/Market";
@@ -23,6 +24,7 @@ export default function App() {
       <Problem />
       <Solution />
       <Technology />
+      <PowerGrid />
       <Legal />
       <Roadmap />
       <Market />

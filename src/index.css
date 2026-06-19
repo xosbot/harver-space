@@ -294,3 +294,63 @@ body {
   .hide-mobile { display: none !important; }
   .full-mobile { width: 100% !important; }
 }
+
+/* ── Video Hero Overlay ─────────────────────────────────────── */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(4,6,15,0.88) 0%, rgba(4,6,15,0.45) 50%, rgba(4,6,15,0.75) 100%);
+  z-index: 1;
+}
+
+/* ── Infographic Bars ───────────────────────────────────────── */
+.infographic-bar {
+  width: 0;
+  transition: width 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible .infographic-bar {
+  /* width set inline, just trigger via opacity parent */
+}
+
+@keyframes bar-grow {
+  from { width: 0; }
+  to   { width: var(--bar-width, 100%); }
+}
+
+.reveal.visible .infographic-bar {
+  animation: bar-grow 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Parallax helpers ───────────────────────────────────────── */
+.parallax-bg {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── Gold accent overrides ──────────────────────────────────── */
+.panel-card.gold-card::before {
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ── Shimmer title ──────────────────────────────────────────── */
+.shimmer-text {
+  background: linear-gradient(90deg, var(--cyan) 0%, var(--white) 40%, var(--gold) 60%, var(--cyan) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Ticker ─────────────────────────────────────────────────── */
+.ticker-track {
+  display: flex;
+  gap: 64px;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
