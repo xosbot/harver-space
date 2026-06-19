@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import OrbitalCanvas from "./OrbitalCanvas";
 import DataTicker from "./DataTicker";
 import Counter from "./Counter";
