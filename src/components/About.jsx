@@ -2,15 +2,55 @@ const About = () => (
   <section style={{ padding: "120px 40px", background: "var(--deep)" }}>
     <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
       <div className="reveal">
-        <div className="section-label">ABOUT HSI</div>
-        <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "80px" }}>
-          ORBITAL STEWARDSHIP.<br />
-          <span className="gold-text">HUMAN RESPONSIBILITY.</span>
+        <div className="section-label">ABOUT</div>
+        <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
+          HARVER SPACE<br />
+          <span className="gold-text">INDUSTRIES</span>
         </h2>
+        <p style={{
+          fontFamily: "var(--font-light)", fontWeight: 300,
+          fontSize: "1.05rem",
+          color: "rgba(240,244,255,0.55)",
+          maxWidth: "560px",
+          lineHeight: 1.8,
+          marginBottom: "80px",
+        }}>
+          Orbital stewardship. Human responsibility. Building the legal and technical
+          architecture for sustainable human presence in orbit.
+        </p>
+      </div>
+
+      {/* Mission Image */}
+      <div className="reveal" style={{ marginBottom: "2px", position: "relative", overflow: "hidden" }}>
+        <div className="panel-card" style={{ padding: "0", overflow: "hidden" }}>
+          <div className="corner-bracket tl" />
+          <div className="corner-bracket br" />
+          <img
+            src="/images/mission-control.jpg"
+            alt="Mission control"
+            style={{
+              width: "100%",
+              height: "280px",
+              objectFit: "cover",
+              display: "block",
+              filter: "brightness(0.6) saturate(1.1)",
+            }}
+          />
+          <div style={{
+            position: "absolute",
+            bottom: 0, left: 0, right: 0,
+            padding: "24px 40px",
+            background: "linear-gradient(to top, rgba(8,12,26,0.95) 0%, transparent 100%)",
+          }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--cyan)", letterSpacing: "0.2em" }}>
+              MISSION OPERATIONS CENTER
+            </div>
+          </div>
+        </div>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
-        {/* About Text */}
+        {/* About Text + Founder */}
         <div className="panel-card reveal reveal-delay-1" style={{ padding: "48px 40px" }}>
           <div className="corner-bracket tl" />
           <div className="mono-data" style={{ fontSize: "10px", color: "var(--cyan)", letterSpacing: "0.25em", marginBottom: "24px" }}>
@@ -49,27 +89,43 @@ const About = () => (
             a theoretical necessity into a commercially viable, legally authorized service.
           </p>
 
-          {/* Founder */}
+          {/* Founder Profile */}
           <div style={{
             marginTop: "40px",
-            padding: "24px",
+            padding: "28px",
             borderLeft: "2px solid var(--cyan)",
             background: "rgba(0,212,255,0.04)",
           }}>
             <div className="mono-data" style={{ fontSize: "10px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "12px" }}>
-              FOUNDER
+              FOUNDER & CEO
             </div>
-            <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", fontWeight: 700, color: "var(--white)", letterSpacing: "0.05em", marginBottom: "4px" }}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: "1.15rem", fontWeight: 700, color: "var(--white)", letterSpacing: "0.05em", marginBottom: "4px" }}>
               DR. SHAAN SHERIF
             </div>
-            <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--gold)", letterSpacing: "0.1em", marginBottom: "12px" }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--gold)", letterSpacing: "0.1em", marginBottom: "16px" }}>
               CEO & Co-Founder, Harver Space Corp
             </div>
-            <p style={{ fontFamily: "var(--font-light)", fontWeight: 300, fontSize: "0.95rem", color: "rgba(240,244,255,0.6)", lineHeight: 1.8 }}>
+            <p style={{ fontFamily: "var(--font-light)", fontWeight: 300, fontSize: "0.95rem", color: "rgba(240,244,255,0.6)", lineHeight: 1.8, marginBottom: "16px" }}>
               Corporate consultant, inventor, and strategic catalyst. Forbes 30 Under 30 (Technology, 2018).
               28+ granted patents across aerospace, RF energy, and AI systems. Led the world's first
               miniaturized Synthetic Aperture Radar satellite. Author of the HSI Dispatch newsletter on Medium.
             </p>
+            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+              {[
+                { label: "PATENTS", value: "28+" },
+                { label: "FORBES 30U30", value: "2018" },
+                { label: "SAR PIONEER", value: "FIRST" },
+              ].map((b, i) => (
+                <div key={i} style={{
+                  padding: "8px 16px",
+                  background: "rgba(0,212,255,0.06)",
+                  border: "1px solid rgba(0,212,255,0.12)",
+                }}>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "8px", color: "var(--cyan)", letterSpacing: "0.15em", marginBottom: "2px" }}>{b.label}</div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "0.85rem", fontWeight: 700, color: "var(--white)" }}>{b.value}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -130,9 +186,13 @@ const About = () => (
             </div>
           </div>
 
-          {/* Key Numbers */}
+          {/* Key Stats */}
           <div className="panel-card reveal reveal-delay-3" style={{ padding: "36px 40px" }}>
             <div className="corner-bracket tl" />
+            <div className="corner-bracket br" />
+            <div className="mono-data" style={{ fontSize: "10px", color: "var(--muted)", letterSpacing: "0.2em", marginBottom: "24px" }}>
+              KEY COMPANY METRICS
+            </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "24px" }}>
               {[
                 { num: "28+", label: "Granted Patents", color: "var(--cyan)" },

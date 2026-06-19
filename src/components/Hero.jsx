@@ -3,10 +3,9 @@ import OrbitalCanvas from "./OrbitalCanvas";
 import DataTicker from "./DataTicker";
 import Counter from "./Counter";
 
-const VIDEO_BG = "";
-
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     const handleMouse = (e) => {
@@ -29,35 +28,53 @@ const Hero = () => {
       display: "flex",
       alignItems: "center",
     }}>
-      {VIDEO_BG ? (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover",
-            zIndex: 0,
-          }}
-        >
-          <source src={VIDEO_BG} type="video/mp4" />
-        </video>
-      ) : (
+      {/* Orbital canvas fallback behind image */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <OrbitalCanvas />
-      )}
+      </div>
 
-      <div className="hero-video-overlay" />
-      <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.5, zIndex: 1 }} />
+      {/* Real Earth image */}
+      <img
+        src="/images/hero-earth.jpg"
+        alt="Earth from space"
+        onLoad={() => setImgLoaded(true)}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 1,
+          opacity: imgLoaded ? 1 : 0,
+          transition: "opacity 1.2s ease",
+        }}
+      />
+
+      {/* Dark gradient overlay */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 2,
+        background: "linear-gradient(180deg, rgba(4,6,15,0.85) 0%, rgba(4,6,15,0.55) 40%, rgba(4,6,15,0.75) 80%, rgba(4,6,15,1) 100%)",
+      }} />
+
+      {/* Side vignette */}
+      <div style={{
+        position: "absolute",
+        inset: 0,
+        zIndex: 2,
+        background: "linear-gradient(90deg, rgba(4,6,15,0.9) 0%, transparent 35%, transparent 65%, rgba(4,6,15,0.9) 100%)",
+      }} />
+
+      <div className="grid-bg" style={{ position: "absolute", inset: 0, opacity: 0.4, zIndex: 3 }} />
 
       {/* Floating particles */}
-      <div className="particles-container" style={{ zIndex: 2 }}>
-        {Array.from({ length: 20 }).map((_, i) => (
+      <div className="particles-container" style={{ zIndex: 4 }}>
+        {Array.from({ length: 25 }).map((_, i) => (
           <div key={i} style={{
             position: "absolute",
             left: `${Math.random() * 100}%`,
-            bottom: `-10px`,
+            bottom: "-10px",
             width: `${Math.random() * 3 + 1}px`,
             height: `${Math.random() * 3 + 1}px`,
             background: i % 3 === 0 ? "var(--gold)" : "var(--cyan)",
@@ -68,8 +85,10 @@ const Hero = () => {
         ))}
       </div>
 
+      {/* Content */}
       <div style={{
-        position: "relative", zIndex: 10,
+        position: "relative",
+        zIndex: 10,
         maxWidth: "1100px",
         padding: "0 40px",
         marginLeft: "calc(50% - 550px)",
@@ -92,7 +111,7 @@ const Hero = () => {
           color: "var(--success)",
         }}>
           <span className="status-dot" />
-          PHASE III OPERATIONS — DEBRIS REMOVAL INITIATIVE ACTIVE
+          PHASE III OPERATIONS — ACTIVE
         </div>
 
         {/* Main headline */}
@@ -129,10 +148,16 @@ const Hero = () => {
 
         {/* CTAs */}
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-          <button className="btn-primary" onClick={() => document.getElementById("mission")?.scrollIntoView({ behavior: "smooth" })}>
+          <button
+            className="btn-primary"
+            onClick={() => document.getElementById("mission")?.scrollIntoView({ behavior: "smooth" })}
+          >
             Explore the Mission
           </button>
-          <button className="btn-outline" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
+          <button
+            className="btn-outline"
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+          >
             Partner With Us
           </button>
         </div>
@@ -185,8 +210,6 @@ const Hero = () => {
           <span>LEO OPERATIONS: 400–1000 KM</span>
           <span style={{ color: "var(--border)" }}>|</span>
           <span>FAA/AST · ESA · JAXA · UAE</span>
-          <span style={{ color: "var(--border)" }}>|</span>
-          <span>PHASE: III — ACTIVE</span>
         </div>
       </div>
 

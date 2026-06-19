@@ -25,10 +25,10 @@ const PowerGrid = () => {
 
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
-          <div className="section-label">ORBITAL ENERGY GRID</div>
+          <div className="section-label">POWER GRID</div>
           <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
-            THE GRID<br />
-            <span className="gold-text">ABOVE THE GRID</span>
+            ORBITAL<br />
+            <span className="gold-text">ENERGY</span>
           </h2>
           <p style={{
             fontFamily: "var(--font-light)", fontWeight: 300,
@@ -42,6 +42,77 @@ const PowerGrid = () => {
             civilization upgrade: satellite-to-surface wireless power delivery. T1SatBravo is
             the beaming platform. ONE THING OS is the software that connects every device to it.
           </p>
+        </div>
+
+        {/* Hero Image */}
+        <div className="reveal reveal-delay-1" style={{
+          marginBottom: "48px",
+          position: "relative",
+          overflow: "hidden",
+          border: "1px solid rgba(201,168,76,0.2)",
+          background: "var(--black)",
+        }}>
+          <div className="corner-bracket tl" />
+          <div className="corner-bracket br" />
+          <img
+            src="/images/earth-night.jpg"
+            alt="Earth at night showing power grid"
+            style={{
+              width: "100%",
+              height: "380px",
+              objectFit: "cover",
+              display: "block",
+              filter: "brightness(0.75) contrast(1.15) saturate(1.1)",
+            }}
+          />
+          <div style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "50%",
+            background: "linear-gradient(to top, var(--black), transparent)",
+            pointerEvents: "none",
+          }} />
+          <div style={{
+            position: "absolute",
+            bottom: "24px",
+            left: "32px",
+            right: "32px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+          }}>
+            <div>
+              <div style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "10px",
+                letterSpacing: "0.25em",
+                color: "var(--gold)",
+                marginBottom: "6px",
+                textTransform: "uppercase",
+              }}>
+                SATELLITE-TO-SURFACE POWER DELIVERY
+              </div>
+              <div style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.4rem",
+                fontWeight: 700,
+                color: "var(--white)",
+                letterSpacing: "0.06em",
+              }}>
+                ORBITAL ENERGY GRID
+              </div>
+            </div>
+            <div style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "10px",
+              color: "var(--muted)",
+              letterSpacing: "0.15em",
+            }}>
+              550 KM LEO • 2.45 GHz BEAM
+            </div>
+          </div>
         </div>
 
         {/* Market Banner - Verified Data */}
@@ -188,10 +259,10 @@ const PowerGrid = () => {
           <div style={{ display: "flex", alignItems: "center", gap: "0", flexWrap: "wrap" }}>
             {[
               { step: "01", label: "Solar Collection", detail: "T1SatBravo captures continuous solar energy in LEO — 24/7, weather-independent", icon: "☀️" },
-              { step: "02", label: "RF Conversion", detail: "Solid-state power amplifiers convert to 2.45 GHz microwave beam, aimed at ground station", icon: "⚡" },
-              { step: "03", label: "Beam Transmission", detail: "Phased-array antenna steers beam to designated rectenna grid coordinates in real time", icon: "📡" },
-              { step: "04", label: "Rectenna Reception", detail: "Ground-side rectenna (rectifying antenna) converts RF back to DC power with 85%+ efficiency", icon: "🔌" },
-              { step: "05", label: "ONE THING Grid", detail: "ONE THING OS distributes converted power to registered devices on the local mesh network", icon: "🌐" },
+              { step: "02", label: "Energy Conversion", detail: "Solid-state power amplifiers convert to 2.45 GHz microwave beam, aimed at ground station", icon: "⚡" },
+              { step: "03", label: "Wireless Transmission", detail: "Phased-array antenna steers beam to designated rectenna grid coordinates in real time", icon: "📡" },
+              { step: "04", label: "Orbital Reception", detail: "Ground-side rectenna (rectifying antenna) converts RF back to DC power with 85%+ efficiency", icon: "🔌" },
+              { step: "05", label: "Earth Distribution", detail: "ONE THING OS distributes converted power to registered devices on the local mesh network", icon: "🌐" },
             ].map((s, i, arr) => (
               <div key={i} style={{ display: "flex", alignItems: "center" }}>
                 <div style={{ padding: "20px 24px", textAlign: "center", minWidth: "140px" }}>

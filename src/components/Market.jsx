@@ -36,10 +36,10 @@ const Market = () => {
     <section id="market" style={{ padding: "120px 40px", background: "var(--black)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
-          <div className="section-label">MARKET & ECONOMICS</div>
+          <div className="section-label">MARKET OPPORTUNITY</div>
           <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
             THE MULTI-BILLION<br />
-            <span className="cyan-text">ORBITAL ECONOMY</span>
+            <span className="cyan-text">THE NUMBERS</span>
           </h2>
           <p style={{
             fontFamily: "var(--font-light)", fontWeight: 300,
@@ -55,7 +55,7 @@ const Market = () => {
           </p>
         </div>
 
-        {/* Market Stats with Animated Bars */}
+        {/* Market Stats */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px", marginBottom: "2px" }}>
           {marketStats.map((s, i) => (
             <div key={i} className={`panel-card reveal data-card reveal-delay-${i + 1}`} style={{ padding: "36px 32px", textAlign: "center" }}>
@@ -120,26 +120,30 @@ const Market = () => {
           </div>
           <div style={{ display: "flex", gap: "2px", flexWrap: "wrap" }}>
             {[
-              ["Astroscale", "$383M", "Series G · Most mission-active ADR specialist · JAXA-CRD2 selected"],
-              ["ClearSpace", "€110M", "Series A + ESA €86M Service Contract · ClearSpace-1 mission 2026"],
-              ["D-Orbit", "$166M", "Series C · Orbital Logistics & ION Satellite Carrier · 14 missions"],
-              ["Star Catcher", "$18M+", "Optical power beaming · DARPA record holder · Kennedy Space Center"],
-            ].map(([co, amt, note], i) => (
+              { co: "Astroscale", amt: "$383M", note: "Series G · Most mission-active ADR specialist · JAXA-CRD2 selected" },
+              { co: "ClearSpace", amt: "€110M", note: "Series A + ESA €86M Service Contract · ClearSpace-1 mission 2026" },
+              { co: "D-Orbit", amt: "$166M", note: "Series C · Orbital Logistics & ION Satellite Carrier · 14 missions" },
+              { co: "Star Catcher", amt: "$18M+", note: "Optical power beaming · DARPA record holder · Kennedy Space Center" },
+            ].map((c, i) => (
               <div key={i} style={{
                 flex: "1 1 200px",
-                padding: "20px 24px",
+                padding: "24px",
                 background: "rgba(0,212,255,0.03)",
-                borderRight: "2px solid var(--border)",
-              }}>
-                <div style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 600, color: "var(--muted)", marginBottom: "4px" }}>{co}</div>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 700, color: "var(--gold)", marginBottom: "6px" }}>{amt}</div>
-                <div className="mono-data" style={{ fontSize: "10px", color: "rgba(107,127,163,0.7)", letterSpacing: "0.05em" }}>{note}</div>
+                borderRight: i < 3 ? "2px solid var(--border)" : "none",
+                transition: "background 0.3s",
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "rgba(0,212,255,0.06)"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "rgba(0,212,255,0.03)"}
+              >
+                <div style={{ fontFamily: "var(--font-body)", fontSize: "0.9rem", fontWeight: 600, color: "var(--muted)", marginBottom: "4px" }}>{c.co}</div>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", fontWeight: 700, color: "var(--gold)", marginBottom: "6px" }}>{c.amt}</div>
+                <div className="mono-data" style={{ fontSize: "10px", color: "rgba(107,127,163,0.7)", letterSpacing: "0.05em" }}>{c.note}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Market Growth Chart - Verified Sources */}
+        {/* Market Growth Trajectory */}
         <div className="panel-card reveal" style={{ marginTop: "2px", padding: "40px" }}>
           <div className="corner-bracket tl" />
           <div className="mono-data" style={{ fontSize: "11px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "32px" }}>
@@ -176,7 +180,7 @@ const Market = () => {
           </div>
         </div>
 
-        {/* Regulatory Landscape */}
+        {/* Regulatory Drivers */}
         <div className="panel-card reveal" style={{ marginTop: "2px", padding: "40px" }}>
           <div className="corner-bracket tl" />
           <div className="corner-bracket br" />
@@ -194,7 +198,11 @@ const Market = () => {
                 padding: "20px",
                 background: "rgba(201,168,76,0.03)",
                 border: "1px solid rgba(201,168,76,0.12)",
-              }}>
+                transition: "background 0.3s",
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = "rgba(201,168,76,0.06)"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "rgba(201,168,76,0.03)"}
+              >
                 <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--gold)", letterSpacing: "0.15em", marginBottom: "8px" }}>
                   {r.org}
                 </div>

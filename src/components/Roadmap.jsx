@@ -46,13 +46,57 @@ const Roadmap = () => {
     <section id="roadmap" style={{ padding: "120px 40px", background: "var(--deep)" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="reveal">
-          <div className="section-label">MISSION ROADMAP</div>
-          <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "80px" }}>
-            2026 — 2030:<br />
+          <div className="section-label">ROADMAP</div>
+          <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
+            2026–2030:<br />
             <span className="cyan-text">THE CLEANUP BEGINS</span>
           </h2>
+          <p style={{
+            fontFamily: "var(--font-light)", fontWeight: 300,
+            fontSize: "1.05rem",
+            color: "rgba(240,244,255,0.55)",
+            maxWidth: "560px",
+            lineHeight: 1.8,
+            marginBottom: "48px",
+          }}>
+            A phased execution plan that transforms orbital cleanup from theoretical
+            necessity into commercially viable, legally authorized service.
+          </p>
         </div>
 
+        {/* Mission Image */}
+        <div className="reveal" style={{ marginBottom: "80px", position: "relative", overflow: "hidden" }}>
+          <div className="panel-card" style={{ padding: "0", overflow: "hidden" }}>
+            <div className="corner-bracket tl" />
+            <div className="corner-bracket br" />
+            <img
+              src="/images/rocket-launch.jpg"
+              alt="Mission launch"
+              style={{
+                width: "100%",
+                height: "320px",
+                objectFit: "cover",
+                display: "block",
+                filter: "brightness(0.7) saturate(1.2)",
+              }}
+            />
+            <div style={{
+              position: "absolute",
+              bottom: 0, left: 0, right: 0,
+              padding: "32px 40px",
+              background: "linear-gradient(to top, rgba(8,12,26,0.95) 0%, transparent 100%)",
+            }}>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "8px" }}>
+                MISSION CONTROL — FIRST LAUNCH WINDOW
+              </div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem", fontWeight: 700, color: "var(--white)" }}>
+                VESPA CAPTURE MISSION — Q4 2026
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Timeline */}
         <div style={{ position: "relative" }}>
           {/* Vertical line */}
           <div style={{
@@ -87,7 +131,7 @@ const Roadmap = () => {
 
               {/* Dot */}
               <div style={{ position: "relative", flexShrink: 0, paddingTop: "4px" }}>
-                <div style={{
+                <div className="timeline-dot" style={{
                   width: "20px", height: "20px",
                   borderRadius: "50%",
                   background: m.color,

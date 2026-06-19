@@ -7,22 +7,28 @@ const Problem = () => (
     position: "relative",
     overflow: "hidden",
   }}>
-    {/* Background accent */}
-    <div style={{
-      position: "absolute",
-      top: "-200px", right: "-200px",
-      width: "600px", height: "600px",
-      borderRadius: "50%",
-      background: "radial-gradient(circle, rgba(0,212,255,0.04) 0%, transparent 70%)",
-      pointerEvents: "none",
-    }} />
+    {/* Background debris field image */}
+    <img
+      src="/images/debris-field.jpg"
+      alt="Orbital debris field"
+      style={{
+        position: "absolute",
+        top: 0,
+        right: 0,
+        width: "60%",
+        height: "100%",
+        objectFit: "cover",
+        opacity: 0.08,
+        mixBlendMode: "screen",
+        pointerEvents: "none",
+      }}
+    />
 
-    <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative" }}>
       <div className="reveal">
         <div className="section-label">THE PROBLEM</div>
         <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
-          ORBIT IS FILLING UP.<br />
-          <span style={{ color: "var(--cyan)" }}>NO ONE IS CLEANING IT.</span>
+          ORBITAL CRISIS
         </h2>
         <p style={{
           fontFamily: "var(--font-light)",
@@ -117,7 +123,7 @@ const Problem = () => (
               }}>
                 {row.band}
               </div>
-              <div style={{ flex: 1, position: "relative", height: "28px" }}>
+              <div style={{ flex: 1, position: "relative", height: "32px" }}>
                 <div style={{
                   position: "absolute", inset: 0,
                   background: "rgba(0,212,255,0.04)",
@@ -129,8 +135,9 @@ const Problem = () => (
                     position: "absolute",
                     left: 0, top: 0, bottom: 0,
                     width: `${row.density}%`,
-                    background: `linear-gradient(90deg, ${row.color}40, ${row.color})`,
-                    borderRight: `2px solid ${row.color}`,
+                    background: `linear-gradient(90deg, ${row.color}30, ${row.color}90, ${row.color})`,
+                    borderRight: `3px solid ${row.color}`,
+                    boxShadow: `0 0 12px ${row.color}30`,
                     transition: "width 1.5s ease",
                   }}
                 />

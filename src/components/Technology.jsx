@@ -57,8 +57,8 @@ const Technology = () => {
         <div className="reveal">
           <div className="section-label">CAPTURE TECHNOLOGY</div>
           <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
-            ENGINEERING THE<br />
-            <span className="shimmer-text">HARVER-CLAW MARK III</span>
+            HARVER-CLAW<br />
+            <span className="shimmer-text">MARK III</span>
           </h2>
           <p style={{
             fontFamily: "var(--font-light)", fontWeight: 300,
@@ -72,6 +72,77 @@ const Technology = () => {
             Control System, debris often tumbles on multiple axes simultaneously. The
             Harver-Claw Mark III is engineered specifically for this problem.
           </p>
+        </div>
+
+        {/* Hero Image */}
+        <div className="reveal reveal-delay-1" style={{
+          marginBottom: "48px",
+          position: "relative",
+          overflow: "hidden",
+          border: "1px solid var(--border)",
+          background: "var(--panel)",
+        }}>
+          <div className="corner-bracket tl" />
+          <div className="corner-bracket br" />
+          <img
+            src="/images/satellite.jpg"
+            alt="Harver-Claw capture system"
+            style={{
+              width: "100%",
+              height: "420px",
+              objectFit: "cover",
+              display: "block",
+              filter: "brightness(0.7) contrast(1.1)",
+            }}
+          />
+          <div style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: "50%",
+            background: "linear-gradient(to top, var(--panel), transparent)",
+            pointerEvents: "none",
+          }} />
+          <div style={{
+            position: "absolute",
+            bottom: "24px",
+            left: "32px",
+            right: "32px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+          }}>
+            <div>
+              <div style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "10px",
+                letterSpacing: "0.25em",
+                color: "var(--cyan)",
+                marginBottom: "6px",
+                textTransform: "uppercase",
+              }}>
+                ORBITAL DEBRIS CAPTURE PLATFORM
+              </div>
+              <div style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "1.4rem",
+                fontWeight: 700,
+                color: "var(--white)",
+                letterSpacing: "0.06em",
+              }}>
+                HARVER-CLAW MK III
+              </div>
+            </div>
+            <div style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "10px",
+              color: "var(--muted)",
+              letterSpacing: "0.15em",
+            }}>
+              CAPTURE SUCCESS RATE: 99.7%
+            </div>
+          </div>
         </div>
 
         {/* Three-Phase Visual Flow */}

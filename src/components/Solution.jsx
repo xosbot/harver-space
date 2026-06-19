@@ -7,6 +7,7 @@ const Solution = () => {
       tag: "LEGAL MOAT",
       color: "var(--gold)",
       icon: "⚖",
+      image: null,
       stats: [
         { label: "Treaty Framework", value: "OST Art. VIII/IX" },
         { label: "Liability Model", value: "BTL Agreement" },
@@ -23,6 +24,7 @@ const Solution = () => {
       tag: "PROPRIETARY R&D",
       color: "var(--cyan)",
       icon: "⚙",
+      image: "/images/satellite.jpg",
       stats: [
         { label: "Capture Mass", value: "12,000 kg" },
         { label: "De-tumbling", value: "Eddy-Current" },
@@ -39,6 +41,7 @@ const Solution = () => {
       tag: "2029 DEPLOYMENT",
       color: "var(--success)",
       icon: "◈",
+      image: "/images/space-station.jpg",
       stats: [
         { label: "Vessel Capacity", value: "4 Captures/Month" },
         { label: "Constellation", value: "6 SV-1 Units" },
@@ -56,8 +59,7 @@ const Solution = () => {
         <div className="reveal">
           <div className="section-label">OUR SOLUTION</div>
           <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "20px" }}>
-            THREE SYSTEMS.<br />
-            <span className="cyan-text">ONE MISSION.</span>
+            THREE SYSTEMS. ONE MISSION.
           </h2>
           <p style={{
             fontFamily: "var(--font-light)",
@@ -119,7 +121,7 @@ const Solution = () => {
                 {sys.tag}
               </div>
 
-              {/* Title */}
+              {/* Title with Icon */}
               <h3 style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "1rem",
@@ -128,6 +130,7 @@ const Solution = () => {
                 color: "var(--white)",
                 marginBottom: "6px",
               }}>
+                <span style={{ marginRight: "8px", color: sys.color }}>{sys.icon}</span>
                 {sys.title.toUpperCase()}
               </h3>
 
@@ -142,6 +145,28 @@ const Solution = () => {
               }}>
                 {sys.subtitle}
               </div>
+
+              {/* Image (if present) */}
+              {sys.image && (
+                <div style={{
+                  marginBottom: "20px",
+                  overflow: "hidden",
+                  border: `1px solid ${sys.color}30`,
+                }}>
+                  <img
+                    src={sys.image}
+                    alt={sys.title}
+                    style={{
+                      width: "100%",
+                      height: "180px",
+                      objectFit: "cover",
+                      display: "block",
+                      opacity: 0.7,
+                      filter: "saturate(0.8)",
+                    }}
+                  />
+                </div>
+              )}
 
               {/* Body */}
               <p style={{
@@ -161,7 +186,7 @@ const Solution = () => {
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "1px",
-                background: "rgba(0,212,255,0.08)",
+                background: `${sys.color}12`,
                 marginBottom: "20px",
               }}>
                 {sys.stats.map((stat, j) => (
