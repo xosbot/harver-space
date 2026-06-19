@@ -3,17 +3,38 @@ const Technology = () => {
     {
       num: "01",
       name: "LiDAR Synchronization",
-      detail: "AI-driven sub-millisecond thruster bursts match the SV-1 vessel's rotation to the debris tumbling frequency before any physical contact is made. Targeting precision: ±0.1°.",
+      detail: "AI-driven sub-millisecond thruster bursts match the SV-1 vessel's rotation to the debris tumbling frequency before any physical contact is made.",
+      specs: [
+        { label: "Targeting Precision", value: "±0.1°" },
+        { label: "Response Time", value: "<2ms" },
+        { label: "Range", value: "50m → 0m" },
+      ],
+      color: "var(--cyan)",
+      icon: "◎",
     },
     {
       num: "02",
       name: "Magnetic Soft-Dock",
-      detail: "Eddy-Current Braking System projects high-intensity magnetic flux — inducing electrical currents in the aluminum debris hull to dampen spin contactlessly, eliminating fragmentation risk.",
+      detail: "Eddy-Current Braking System projects high-intensity magnetic flux — inducing electrical currents in the aluminum debris hull to dampen spin contactlessly.",
+      specs: [
+        { label: "Magnetic Flux", value: "2.4 T" },
+        { label: "Spin Reduction", value: "98.3%" },
+        { label: "Fragmentation Risk", value: "0.0%" },
+      ],
+      color: "var(--gold)",
+      icon: "◈",
     },
     {
       num: "03",
       name: "Mechanical Embrace",
-      detail: "Four articulated carbon-fiber arms with tactile haptic sensors lock onto structural hardpoints — typically the engine bell or adapter ring — securing the object for controlled deorbit transfer.",
+      detail: "Four articulated carbon-fiber arms with tactile haptic sensors lock onto structural hardpoints — typically the engine bell or adapter ring.",
+      specs: [
+        { label: "Arm Count", value: "4× Articulated" },
+        { label: "Grip Force", value: "12 kN" },
+        { label: "Sensor Array", value: "Tactile Haptic" },
+      ],
+      color: "var(--success)",
+      icon: "⊕",
     },
   ];
 
@@ -26,6 +47,8 @@ const Technology = () => {
     ["Arm Sensors", "Tactile Haptic Array"],
     ["Capture Sequence", "3-Phase Protocol"],
     ["Classification", "Uncooperative Debris Capable"],
+    ["Power Consumption", "2.4 kW (capture mode)"],
+    ["Communication", "Ka-Band + Laser Link"],
   ];
 
   return (
@@ -35,7 +58,7 @@ const Technology = () => {
           <div className="section-label">CAPTURE TECHNOLOGY</div>
           <h2 className="display-title" style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", marginBottom: "16px" }}>
             ENGINEERING THE<br />
-            <span className="cyan-text">HARVER-CLAW MARK III</span>
+            <span className="shimmer-text">HARVER-CLAW MARK III</span>
           </h2>
           <p style={{
             fontFamily: "var(--font-light)", fontWeight: 300,
@@ -51,79 +74,324 @@ const Technology = () => {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
-          <div className="panel-card reveal reveal-delay-1" style={{ padding: "48px 40px" }}>
-            <div className="corner-bracket tl" />
-            <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.25em", color: "var(--cyan)", marginBottom: "40px" }}>
-              THREE-PHASE CAPTURE SEQUENCE
-            </h3>
+        {/* Three-Phase Visual Flow */}
+        <div className="reveal reveal-delay-1" style={{
+          marginBottom: "48px",
+          padding: "40px",
+          background: "var(--panel)",
+          border: "1px solid var(--border)",
+          position: "relative",
+          overflow: "hidden",
+        }}>
+          <div className="corner-bracket tl" />
+          <div className="corner-bracket br" />
 
+          <div style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "11px",
+            letterSpacing: "0.25em",
+            color: "var(--cyan)",
+            marginBottom: "32px",
+            textTransform: "uppercase",
+          }}>
+            // THREE-PHASE CAPTURE SEQUENCE — ANIMATED FLOW
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "2px",
+            position: "relative",
+          }}>
             {phases.map((ph, i) => (
               <div key={i} style={{
-                display: "flex",
-                gap: "24px",
-                marginBottom: i < phases.length - 1 ? "0" : "0",
+                padding: "32px 24px",
+                background: "rgba(0,212,255,0.03)",
                 position: "relative",
+                textAlign: "center",
               }}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <div className="timeline-dot" />
-                  {i < phases.length - 1 && (
-                    <div style={{ width: "1px", flex: 1, background: "var(--border)", margin: "8px 0", minHeight: "60px" }} />
-                  )}
+                {/* Phase Icon */}
+                <div style={{
+                  width: "64px",
+                  height: "64px",
+                  margin: "0 auto 20px",
+                  borderRadius: "50%",
+                  border: `2px solid ${ph.color}`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "24px",
+                  color: ph.color,
+                  position: "relative",
+                  animation: "energyPulse 3s ease-in-out infinite",
+                  animationDelay: `${i * 0.5}s`,
+                }}>
+                  {ph.icon}
+                  <div style={{
+                    position: "absolute",
+                    inset: "-8px",
+                    borderRadius: "50%",
+                    border: `1px solid ${ph.color}`,
+                    opacity: 0.3,
+                    animation: "ripple 2s ease-out infinite",
+                    animationDelay: `${i * 0.5}s`,
+                  }} />
                 </div>
 
-                <div style={{ paddingBottom: i < phases.length - 1 ? "40px" : "0" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
-                    <span className="mono-data" style={{ fontSize: "10px", color: "var(--muted)", letterSpacing: "0.2em" }}>PHASE {ph.num}</span>
-                  </div>
-                  <div style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--white)", marginBottom: "8px" }}>
-                    {ph.name}
-                  </div>
-                  <p style={{ fontFamily: "var(--font-light)", fontWeight: 300, fontSize: "0.9rem", color: "rgba(240,244,255,0.55)", lineHeight: 1.7 }}>
-                    {ph.detail}
-                  </p>
+                {/* Phase Label */}
+                <div style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "10px",
+                  letterSpacing: "0.2em",
+                  color: ph.color,
+                  marginBottom: "8px",
+                }}>
+                  PHASE {ph.num}
                 </div>
+
+                {/* Phase Name */}
+                <div style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "1.1rem",
+                  fontWeight: 600,
+                  color: "var(--white)",
+                  marginBottom: "12px",
+                  letterSpacing: "0.05em",
+                }}>
+                  {ph.name}
+                </div>
+
+                {/* Phase Detail */}
+                <p style={{
+                  fontFamily: "var(--font-light)",
+                  fontSize: "0.85rem",
+                  color: "rgba(240,244,255,0.55)",
+                  lineHeight: 1.7,
+                  marginBottom: "20px",
+                }}>
+                  {ph.detail}
+                </p>
+
+                {/* Phase Specs */}
+                <div style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                }}>
+                  {ph.specs.map((spec, j) => (
+                    <div key={j} style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      padding: "8px 12px",
+                      background: "rgba(0,0,0,0.3)",
+                      borderLeft: `2px solid ${ph.color}30`,
+                    }}>
+                      <span style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "10px",
+                        color: "var(--muted)",
+                        letterSpacing: "0.1em",
+                      }}>
+                        {spec.label}
+                      </span>
+                      <span style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: "11px",
+                        color: ph.color,
+                      }}>
+                        {spec.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Connector Arrow */}
+                {i < phases.length - 1 && (
+                  <div style={{
+                    position: "absolute",
+                    right: "-16px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "32px",
+                    height: "2px",
+                    background: "linear-gradient(90deg, var(--cyan), var(--gold))",
+                    zIndex: 2,
+                  }}>
+                    <div style={{
+                      position: "absolute",
+                      right: 0,
+                      top: "-4px",
+                      width: 0,
+                      height: 0,
+                      borderLeft: "8px solid var(--gold)",
+                      borderTop: "5px solid transparent",
+                      borderBottom: "5px solid transparent",
+                    }} />
+                  </div>
+                )}
               </div>
             ))}
           </div>
+        </div>
 
+        {/* Technical Specifications + Compliance */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+          {/* Specs Panel */}
           <div className="panel-card reveal reveal-delay-2" style={{ padding: "48px 40px" }}>
             <div className="corner-bracket tr" />
-            <div className="corner-bracket bl" />
-            <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.25em", color: "var(--cyan)", marginBottom: "40px" }}>
+            <h3 style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              letterSpacing: "0.25em",
+              color: "var(--cyan)",
+              marginBottom: "32px",
+            }}>
               TECHNICAL SPECIFICATIONS — MK III
             </h3>
 
-            {specs.map(([key, val], i) => (
-              <div key={i} style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "14px 0",
-                borderBottom: "1px solid rgba(0,212,255,0.06)",
-              }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "11px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                  {key}
-                </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: "12px", color: "var(--cyan)", letterSpacing: "0.05em" }}>
-                  {val}
-                </span>
-              </div>
-            ))}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+              {specs.map(([key, val], i) => (
+                <div key={i} style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "14px 0",
+                  borderBottom: "1px solid rgba(0,212,255,0.06)",
+                }}>
+                  <span style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    color: "var(--muted)",
+                    letterSpacing: "0.1em",
+                  }}>
+                    {key}
+                  </span>
+                  <span style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "12px",
+                    color: "var(--cyan)",
+                    letterSpacing: "0.05em",
+                  }}>
+                    {val}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            <div style={{ marginTop: "32px", padding: "20px", background: "rgba(0,255,136,0.04)", border: "1px solid rgba(0,255,136,0.15)" }}>
-              <div className="mono-data" style={{ fontSize: "10px", color: "var(--success)", letterSpacing: "0.2em", marginBottom: "12px" }}>
+          {/* Compliance + Performance Panel */}
+          <div className="panel-card reveal reveal-delay-3" style={{ padding: "48px 40px" }}>
+            <div className="corner-bracket bl" />
+            <h3 style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "11px",
+              letterSpacing: "0.25em",
+              color: "var(--cyan)",
+              marginBottom: "32px",
+            }}>
+              COMPLIANCE & PERFORMANCE
+            </h3>
+
+            {/* Compliance Status */}
+            <div style={{
+              padding: "20px",
+              background: "rgba(0,255,136,0.04)",
+              border: "1px solid rgba(0,255,136,0.15)",
+              marginBottom: "24px",
+            }}>
+              <div style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "10px",
+                color: "var(--success)",
+                letterSpacing: "0.2em",
+                marginBottom: "16px",
+                textTransform: "uppercase",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+              }}>
+                <span className="status-dot" />
                 COMPLIANCE STATUS — LIVE
               </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {[
+                  "UN OOSA Registration",
+                  "Sovereign Consent Framework",
+                  "FAA/AST Authorization",
+                  "ESA Space Safety Compliance",
+                  "JAXA Coordination Agreement",
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <span style={{ color: "var(--success)", fontSize: "12px" }}>✓</span>
+                    <span style={{
+                      fontFamily: "var(--font-body)",
+                      fontSize: "0.85rem",
+                      color: "rgba(240,244,255,0.6)",
+                    }}>
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Performance Metrics */}
+            <div style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "10px",
+              letterSpacing: "0.2em",
+              color: "var(--cyan)",
+              marginBottom: "16px",
+              textTransform: "uppercase",
+            }}>
+              // SIMULATED PERFORMANCE
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
-                "UN OOSA Registration",
-                "Sovereign Consent Framework",
-                "FAA/AST Authorization",
-                "ESA Space Safety Compliance",
-              ].map((item, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-                  <span style={{ color: "var(--success)", fontSize: "12px" }}>✓</span>
-                  <span style={{ fontFamily: "var(--font-body)", fontSize: "0.85rem", color: "rgba(240,244,255,0.6)" }}>{item}</span>
+                { label: "Capture Success Rate", value: "99.7%", bar: "99.7%" },
+                { label: "De-tumble Efficiency", value: "98.3%", bar: "98.3%" },
+                { label: "Arm Precision", value: "±0.5mm", bar: "95%" },
+              ].map((metric, i) => (
+                <div key={i}>
+                  <div style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "6px",
+                  }}>
+                    <span style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "10px",
+                      color: "var(--muted)",
+                      letterSpacing: "0.1em",
+                    }}>
+                      {metric.label}
+                    </span>
+                    <span style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "11px",
+                      color: "var(--cyan)",
+                    }}>
+                      {metric.value}
+                    </span>
+                  </div>
+                  <div style={{
+                    height: "4px",
+                    background: "rgba(0,212,255,0.1)",
+                    borderRadius: "2px",
+                    overflow: "hidden",
+                  }}>
+                    <div
+                      className="infographic-bar"
+                      style={{
+                        width: metric.bar,
+                        height: "100%",
+                        background: "linear-gradient(90deg, var(--cyan), var(--gold))",
+                        borderRadius: "2px",
+                        "--bar-width": metric.bar,
+                      }}
+                    />
+                  </div>
                 </div>
               ))}
             </div>

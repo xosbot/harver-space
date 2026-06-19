@@ -1,9 +1,11 @@
+import Counter from "./Counter";
+
 const Market = () => {
   const marketStats = [
-    { label: "Monitoring + Removal 2025", value: "$1.14B", sub: "Mordor Intelligence · Verified 2025" },
-    { label: "Market Size 2030", value: "$1.84B", sub: "CAGR 8.25% · Business Research Co." },
-    { label: "Active Removal CAGR", value: "38.3%", sub: "Pure ADR segment 2025–2030 · TBRC" },
-    { label: "Wireless Power Market 2025", value: "$28.6B", sub: "IMARC Group · WPT market validated" },
+    { label: "Active Debris Removal 2025", value: "$671M", sub: "WiseGuyReports · CAGR 17.9% to 2035", color: "var(--cyan)" },
+    { label: "Debris Monitoring + Removal 2035", value: "$3.2B", sub: "Market Research Future · CAGR 11.06%", color: "var(--gold)" },
+    { label: "Wireless Power Transmission 2035", value: "$105B", sub: "MRFR · CAGR 20.4%", color: "var(--success)" },
+    { label: "Space-Based Solar Power 2035", value: "$543M", sub: "360 Research · CAGR 17.1%", color: "var(--cyan2)" },
   ];
 
   const revenue = [
@@ -19,14 +21,14 @@ const Market = () => {
       stream: "Operator-Paid Deorbit Services",
       status: "2026+",
       statusColor: "var(--cyan)",
-      body: "Constellation operators pay per-satellite or per-mission for end-of-life deorbit. With SpaceX Starlink targeting 42,000 satellites and OneWeb/Amazon Kuiper adding thousands more, the deorbit compliance market is structurally mandated. Multi-client sequential removal dramatically reduces per-unit cost. HSI's Debris-as-a-Service model targets $2,000–8,000 per satellite deorbit.",
+      body: "Constellation operators pay per-satellite or per-mission for end-of-life deorbit. With SpaceX Starlink exceeding 7,135 active satellites and Amazon Kuiper/OneWeb adding thousands more, the deorbit compliance market is structurally mandated. HSI's Debris-as-a-Service model targets $2,000–8,000 per satellite deorbit. The FCC 5-year rule makes this non-optional.",
     },
     {
       num: "03",
       stream: "Orbital Energy Grid (T1SatBravo)",
       status: "2027+",
       statusColor: "var(--gold)",
-      body: "Space-based solar power market: $634.9M in 2024 → $1.05B by 2030 (Grand View Research, CAGR 8.5%). T1SatBravo is HSI's power-beaming satellite designed to charge low-power IoT devices and rural infrastructure via rectenna arrays. Wireless power transmission market globally: $28.6B in 2025 → $184.1B by 2034 (IMARC Group, CAGR 22.3%). ONE THING OS is the device-layer software that connects everything to the grid.",
+      body: "Space-based solar power: $131M in 2026 → $543M by 2035 (CAGR 17.1%, 360 Research). Wireless power transmission market: $16.4B in 2025 → $105B by 2035 (MRFR, CAGR 20.4%). T1SatBravo is HSI's power-beaming satellite designed to charge low-power IoT devices and rural infrastructure via rectenna arrays. ONE THING OS is the device-layer software that connects everything to the grid.",
     },
   ];
 
@@ -53,16 +55,17 @@ const Market = () => {
           </p>
         </div>
 
+        {/* Market Stats with Animated Bars */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "2px", marginBottom: "2px" }}>
           {marketStats.map((s, i) => (
-            <div key={i} className={`panel-card reveal reveal-delay-${i + 1}`} style={{ padding: "36px 32px", textAlign: "center" }}>
+            <div key={i} className={`panel-card reveal data-card reveal-delay-${i + 1}`} style={{ padding: "36px 32px", textAlign: "center" }}>
               <div className="corner-bracket tl" />
               <div className="corner-bracket br" />
               <div style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "2.2rem",
                 fontWeight: 700,
-                color: "var(--cyan)",
+                color: s.color || "var(--cyan)",
                 marginBottom: "8px",
               }}>{s.value}</div>
               <div style={{ fontFamily: "var(--font-body)", fontSize: "0.95rem", fontWeight: 600, color: "var(--white)", marginBottom: "6px" }}>
@@ -75,9 +78,10 @@ const Market = () => {
           ))}
         </div>
 
+        {/* Revenue Streams */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "2px", marginBottom: "2px" }}>
           {revenue.map((r, i) => (
-            <div key={i} className={`panel-card reveal reveal-delay-${i + 1}`} style={{ padding: "40px" }}>
+            <div key={i} className={`panel-card reveal data-card reveal-delay-${i + 1}`} style={{ padding: "40px" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "24px" }}>
                 <span className="mono-data" style={{ fontSize: "2rem", color: "rgba(240,244,255,0.06)", fontWeight: 700 }}>{r.num}</span>
                 <span style={{
@@ -107,18 +111,19 @@ const Market = () => {
           ))}
         </div>
 
+        {/* Competitor Funding Benchmarks */}
         <div className="panel-card reveal" style={{ padding: "40px" }}>
           <div className="corner-bracket tl" />
           <div className="corner-bracket tr" />
           <div className="mono-data" style={{ fontSize: "11px", color: "var(--muted)", letterSpacing: "0.2em", marginBottom: "24px" }}>
-            SECTOR FUNDING BENCHMARKS — COMPARABLE COMPANIES
+            SECTOR FUNDING BENCHMARKS — VERIFIED 2025-2026
           </div>
           <div style={{ display: "flex", gap: "2px", flexWrap: "wrap" }}>
             {[
-              ["Astroscale", "$383M", "Series G · Equity + Agency Contracts · JAXA-CRD2 selected"],
-              ["ClearSpace", "€110M", "Series A + ESA €86M Service Contract · ClearSpace-1"],
-              ["D-Orbit", "$166M", "Series C · Orbital Logistics & ION Satellite Carrier"],
-              ["LeoLabs", "$29M", "2024 Expansion · 12-site global radar tracking network"],
+              ["Astroscale", "$383M", "Series G · Most mission-active ADR specialist · JAXA-CRD2 selected"],
+              ["ClearSpace", "€110M", "Series A + ESA €86M Service Contract · ClearSpace-1 mission 2026"],
+              ["D-Orbit", "$166M", "Series C · Orbital Logistics & ION Satellite Carrier · 14 missions"],
+              ["Star Catcher", "$18M+", "Optical power beaming · DARPA record holder · Kennedy Space Center"],
             ].map(([co, amt, note], i) => (
               <div key={i} style={{
                 flex: "1 1 200px",
@@ -134,18 +139,18 @@ const Market = () => {
           </div>
         </div>
 
-        {/* Market Growth Chart */}
+        {/* Market Growth Chart - Verified Sources */}
         <div className="panel-card reveal" style={{ marginTop: "2px", padding: "40px" }}>
           <div className="corner-bracket tl" />
           <div className="mono-data" style={{ fontSize: "11px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "32px" }}>
-            MARKET GROWTH TRAJECTORY — VERIFIED SOURCES
+            MARKET GROWTH TRAJECTORY — VERIFIED RESEARCH SOURCES
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "24px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "24px" }}>
             {[
-              { market: "Space Debris Monitoring + Removal", y2025: "$1.14B", y2031: "$1.83B", cagr: "8.25%", src: "Mordor Intelligence" },
-              { market: "Active Debris Removal (pure ADR)", y2025: "$150M", y2031: "$750M+", cagr: "38.3%", src: "Business Research Co." },
-              { market: "Space-Based Solar Power", y2025: "$710M", y2031: "$1.7B", cagr: "17.1%", src: "GM Insights 2025" },
-              { market: "Wireless Power Transmission", y2025: "$28.6B", y2031: "$184B+", cagr: "22.3%", src: "IMARC Group 2025" },
+              { market: "Space Debris Monitoring + Removal", y2025: "$1.12B", y2035: "$3.2B", cagr: "11.06%", src: "Market Research Future 2025" },
+              { market: "Active Debris Removal (pure ADR)", y2025: "$671M", y2035: "$3.5B", cagr: "17.9%", src: "WiseGuyReports Apr 2026" },
+              { market: "Space-Based Solar Power", y2025: "$131M", y2035: "$543M", cagr: "17.1%", src: "360 Research Nov 2025" },
+              { market: "Wireless Power Transmission", y2025: "$16.4B", y2035: "$105B", cagr: "20.4%", src: "MRFR 2025" },
             ].map((m, i) => (
               <div key={i} style={{ borderTop: "2px solid var(--border)", paddingTop: "20px" }}>
                 <div style={{ fontFamily: "var(--font-body)", fontSize: "0.85rem", fontWeight: 600, color: "var(--white)", marginBottom: "12px", lineHeight: 1.4 }}>
@@ -158,13 +163,46 @@ const Market = () => {
                   </div>
                   <div style={{ color: "var(--muted)", alignSelf: "flex-end", marginBottom: "4px" }}>→</div>
                   <div>
-                    <div className="mono-data" style={{ fontSize: "9px", color: "var(--cyan)", letterSpacing: "0.1em" }}>2031+</div>
-                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", color: "var(--cyan)" }}>{m.y2031}</div>
+                    <div className="mono-data" style={{ fontSize: "9px", color: "var(--cyan)", letterSpacing: "0.1em" }}>2035</div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.1rem", color: "var(--cyan)" }}>{m.y2035}</div>
                   </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--success)" }}>CAGR {m.cagr}</span>
                   <span className="mono-data" style={{ fontSize: "9px", color: "var(--muted)" }}>{m.src}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Regulatory Landscape */}
+        <div className="panel-card reveal" style={{ marginTop: "2px", padding: "40px" }}>
+          <div className="corner-bracket tl" />
+          <div className="corner-bracket br" />
+          <div className="mono-data" style={{ fontSize: "11px", color: "var(--gold)", letterSpacing: "0.2em", marginBottom: "24px" }}>
+            REGULATORY DRIVERS — WHY THE MARKET IS STRUCTURALLY MANDATED
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
+            {[
+              { org: "FCC (US)", rule: "5-Year Deorbit Mandate", detail: "All US-licensed satellites must deorbit within 5 years of end-of-life. Effective 2023. Creates mandatory compliance spend." },
+              { org: "ESA", rule: "Zero Debris Charter", detail: "ESA adopted 5-year orbit vacancy standard in 2023. Zero Debris Charter signed by 12+ countries and 100+ entities." },
+              { org: "UNOOSA", rule: "Long-Term Sustainability Guidelines", detail: "UN guidelines for responsible space operations. Growing push for binding international debris mitigation framework." },
+              { org: "Japan (JAXA)", rule: "CRD2 Program", detail: "Japan's Commercial Removal of Debris Demonstration program. Phase 2 actively procuring commercial ADR services." },
+            ].map((r, i) => (
+              <div key={i} style={{
+                padding: "20px",
+                background: "rgba(201,168,76,0.03)",
+                border: "1px solid rgba(201,168,76,0.12)",
+              }}>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--gold)", letterSpacing: "0.15em", marginBottom: "8px" }}>
+                  {r.org}
+                </div>
+                <div style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, color: "var(--white)", marginBottom: "8px" }}>
+                  {r.rule}
+                </div>
+                <div style={{ fontFamily: "var(--font-light)", fontSize: "0.85rem", color: "rgba(240,244,255,0.55)", lineHeight: 1.6 }}>
+                  {r.detail}
                 </div>
               </div>
             ))}

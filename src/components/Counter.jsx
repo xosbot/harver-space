@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-const Counter = ({ target, suffix = "", prefix = "" }) => {
+const Counter = ({ target, suffix = "", prefix = "", duration = 2000 }) => {
   const [val, setVal] = useState(0);
   const ref = useRef(null);
   const started = useRef(false);
@@ -9,7 +9,6 @@ const Counter = ({ target, suffix = "", prefix = "" }) => {
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !started.current) {
         started.current = true;
-        const duration = 2000;
         const startTime = performance.now();
         const tick = (now) => {
           const elapsed = now - startTime;
@@ -23,7 +22,7 @@ const Counter = ({ target, suffix = "", prefix = "" }) => {
     }, { threshold: 0.3 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
-  }, [target]);
+  }, [target, duration]);
 
   return (
     <span ref={ref}>

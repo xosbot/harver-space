@@ -7,6 +7,7 @@ const Problem = () => (
     position: "relative",
     overflow: "hidden",
   }}>
+    {/* Background accent */}
     <div style={{
       position: "absolute",
       top: "-200px", right: "-200px",
@@ -38,10 +39,11 @@ const Problem = () => (
         </p>
       </div>
 
+      {/* Stat Cards - Verified ESA 2025 Data */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2px" }}>
         {[
           {
-            number: 54000,
+            number: 36500,
             suffix: "+",
             label: "Tracked objects ≥10cm in orbit",
             sub: "ESA Space Environment Report 2025 · DISCOS Database",
@@ -49,23 +51,24 @@ const Problem = () => (
             delay: "reveal-delay-1",
           },
           {
-            number: 1200000,
+            number: 1000000,
             suffix: "+",
-            label: "Damage-capable objects (1–10cm)",
-            sub: "ESA est. · Too small to track, large enough to destroy a satellite",
+            label: "Debris fragments 1–10cm",
+            sub: "ESA estimate · Too small to track, large enough to destroy a satellite",
             color: "var(--danger)",
             delay: "reveal-delay-2",
           },
           {
-            number: 50000,
-            suffix: "+",
-            label: "Kessler-trigger objects (≥10cm)",
-            sub: "Capable of catastrophic fragment-generating collisions",
+            number: 42,
+            prefix: "$",
+            suffix: "B",
+            label: "Economic risk over next decade",
+            sub: "World Economic Forum 2026 · Clear Orbit, Secure Future report",
             color: "var(--gold)",
             delay: "reveal-delay-3",
           },
         ].map((stat, i) => (
-          <div key={i} className={`panel-card reveal ${stat.delay}`} style={{ padding: "48px 40px" }}>
+          <div key={i} className={`panel-card reveal data-card ${stat.delay}`} style={{ padding: "48px 40px" }}>
             <div className="corner-bracket tl" />
             <div className="corner-bracket br" />
             <div className="stat-number" style={{ color: stat.color, marginBottom: "16px" }}>
@@ -88,18 +91,18 @@ const Problem = () => (
         ))}
       </div>
 
-      {/* Orbit Density Visualizer */}
+      {/* Orbit Density Visualizer - Verified Data */}
       <div className="panel-card reveal" style={{ marginTop: "2px", padding: "48px 40px" }}>
         <div className="corner-bracket tl" />
         <div className="corner-bracket tr" />
         <div className="mono-data" style={{ fontSize: "11px", color: "var(--cyan)", letterSpacing: "0.2em", marginBottom: "32px" }}>
-          DEBRIS DENSITY BY ORBITAL ALTITUDE — 2025
+          DEBRIS DENSITY BY ORBITAL ALTITUDE — ESA 2025
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {[
-            { band: "LEO 200–600 km", label: "Starlink Belt", density: 78, color: "var(--cyan)", note: "~40,000 active + debris objects" },
-            { band: "SSO 600–1000 km", label: "CRITICAL ZONE", density: 95, color: "var(--danger)", note: "Above Kessler runaway threshold · highest collision risk" },
+            { band: "LEO 200–600 km", label: "Starlink Belt", density: 78, color: "var(--cyan)", note: "~11,800 active satellites (7,135 Starlink)" },
+            { band: "SSO 600–1000 km", label: "CRITICAL ZONE", density: 95, color: "var(--danger)", note: "Above Kessler runaway threshold · 31% collision risk increase since 2022" },
             { band: "MEO 1000–20000 km", label: "GPS / GNSS", density: 28, color: "var(--gold)", note: "~8,000 objects including GPS constellation" },
             { band: "GEO ~35,786 km", label: "Geostationary Ring", density: 42, color: "var(--cyan2)", note: "~1,800 active satellites + 3,000 defunct" },
           ].map((row, i) => (
@@ -158,7 +161,38 @@ const Problem = () => (
           ))}
         </div>
 
-        <div style={{ marginTop: "32px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
+        {/* Key Events Timeline */}
+        <div style={{ marginTop: "40px", padding: "24px", background: "rgba(255,68,68,0.04)", border: "1px solid rgba(255,68,68,0.15)" }}>
+          <div className="mono-data" style={{ fontSize: "10px", color: "var(--danger)", letterSpacing: "0.2em", marginBottom: "16px" }}>
+            CRITICAL INCIDENTS — WHY ACTION IS URGENT
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
+            {[
+              { year: "2009", event: "Iridium-Cosmos collision — first satellite-on-satellite impact, 2,000+ debris fragments" },
+              { year: "2024", event: "Chinese Long March 6A breakup — 700+ fragments at 300–1000km altitude" },
+              { year: "2025", event: "ESA confirms: debris growth outpaces natural re-entries — active removal now mandatory" },
+            ].map((item, i) => (
+              <div key={i} style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                <div style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "0.85rem",
+                  fontWeight: 700,
+                  color: "var(--danger)",
+                  flexShrink: 0,
+                }}>{item.year}</div>
+                <div style={{
+                  fontFamily: "var(--font-light)",
+                  fontSize: "0.85rem",
+                  color: "rgba(240,244,255,0.6)",
+                  lineHeight: 1.6,
+                }}>{item.event}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Sovereignty vs Economics */}
+        <div style={{ marginTop: "2px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px" }}>
           <div>
             <h3 style={{ fontFamily: "var(--font-body)", fontSize: "1rem", fontWeight: 600, letterSpacing: "0.15em", color: "var(--cyan)", marginBottom: "20px", textTransform: "uppercase" }}>
               The Sovereignty Paradox
@@ -180,7 +214,7 @@ const Problem = () => (
               annually. The 800–1000 km band is now statistically above the Kessler runaway 
               threshold — meaning even with zero new launches, debris growth is self-sustaining.
               The FCC's new 5-year deorbit mandate is turning orbital cleanup from voluntary 
-              to legally required — creating a $1.14B market in 2025 growing to $1.84B by 2030.
+              to legally required — creating a $3.2B market by 2035 (MRFR, CAGR 11.06%).
             </p>
           </div>
         </div>

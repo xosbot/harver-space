@@ -30,7 +30,9 @@ const Nav = () => {
       borderBottom: scrolled ? "1px solid var(--border)" : "none",
       transition: "all 0.4s ease",
     }}>
-      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+      {/* Logo */}
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", cursor: "pointer" }}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
         <div style={{
           width: "32px", height: "32px",
           border: "2px solid var(--cyan)",
@@ -55,13 +57,15 @@ const Nav = () => {
           fontSize: "10px",
           color: "var(--muted)",
           letterSpacing: "0.15em",
-        }}>HARVER SPACE INDUSTRIES</span>
+        }} className="hide-mobile">HARVER SPACE INDUSTRIES</span>
       </div>
 
+      {/* Desktop Nav */}
       <div className="hide-mobile" style={{ display: "flex", gap: "32px", alignItems: "center" }}>
         {[
           ["mission", "Mission"],
           ["technology", "Technology"],
+          ["power-grid", "Energy Grid"],
           ["legal", "Legal"],
           ["roadmap", "Roadmap"],
           ["market", "Market"],
@@ -74,21 +78,59 @@ const Nav = () => {
         </button>
       </div>
 
+      {/* Mobile Menu Button */}
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         style={{
           display: "none",
           background: "none",
-          border: "none",
+          border: "1px solid var(--border)",
           color: "var(--cyan)",
-          fontSize: "20px",
+          fontSize: "18px",
           cursor: "pointer",
           fontFamily: "var(--font-mono)",
+          padding: "6px 10px",
         }}
         className="show-mobile"
       >
         {menuOpen ? "✕" : "☰"}
       </button>
+
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div style={{
+          position: "fixed",
+          top: "64px", left: 0, right: 0, bottom: 0,
+          background: "rgba(4,6,15,0.98)",
+          backdropFilter: "blur(20px)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "32px",
+          zIndex: 999,
+        }}>
+          {[
+            ["mission", "Mission"],
+            ["technology", "Technology"],
+            ["power-grid", "Energy Grid"],
+            ["legal", "Legal"],
+            ["roadmap", "Roadmap"],
+            ["market", "Market"],
+            ["contact", "Contact"],
+          ].map(([id, label]) => (
+            <span key={id} style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "1.2rem",
+              fontWeight: 700,
+              letterSpacing: "0.2em",
+              color: "var(--white)",
+              cursor: "pointer",
+              textTransform: "uppercase",
+            }} onClick={() => scrollTo(id)}>{label}</span>
+          ))}
+        </div>
+      )}
 
       <style>{`
         @media (max-width: 768px) {

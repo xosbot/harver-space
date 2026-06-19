@@ -26,6 +26,7 @@ const Legal = () => (
         </p>
       </div>
 
+      {/* Legal Pillars */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "2px", marginBottom: "2px" }}>
         {[
           {
@@ -50,7 +51,7 @@ const Legal = () => (
             delay: "reveal-delay-3",
           },
         ].map((p, i) => (
-          <div key={i} className={`panel-card reveal ${p.delay}`} style={{ padding: "48px 40px" }}>
+          <div key={i} className={`panel-card reveal hover-glow ${p.delay}`} style={{ padding: "48px 40px" }}>
             <div className="corner-bracket tl" style={{ borderColor: p.color }} />
             <div style={{
               fontFamily: "var(--font-mono)",
@@ -78,6 +79,7 @@ const Legal = () => (
         ))}
       </div>
 
+      {/* Partner Nations */}
       <div className="panel-card reveal" style={{ padding: "40px" }}>
         <div className="corner-bracket tl" />
         <div className="corner-bracket tr" />
@@ -101,7 +103,11 @@ const Legal = () => (
               background: "var(--black)",
               border: "1px solid var(--border)",
               position: "relative",
-            }}>
+              transition: "border-color 0.3s",
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = color}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = "var(--border)"}
+            >
               <div style={{
                 position: "absolute",
                 top: 0, left: 0, right: 0, height: "2px",

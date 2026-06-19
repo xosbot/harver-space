@@ -44,7 +44,7 @@ const PowerGrid = () => {
           </p>
         </div>
 
-        {/* Market Banner */}
+        {/* Market Banner - Verified Data */}
         <div className="panel-card reveal" style={{
           padding: "32px 40px",
           marginBottom: "2px",
@@ -56,25 +56,26 @@ const PowerGrid = () => {
               <div className="mono-data" style={{ fontSize: "9px", color: "rgba(201,168,76,0.5)", letterSpacing: "0.2em", marginBottom: "4px" }}>
                 WIRELESS POWER TRANSMISSION MARKET 2025
               </div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: "2.5rem", fontWeight: 700, color: "var(--gold)" }}>$28.6B</div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "2.5rem", fontWeight: 700, color: "var(--gold)" }}>$16.4B</div>
             </div>
             <div style={{ color: "var(--muted)", fontSize: "1.5rem" }}>→</div>
             <div>
               <div className="mono-data" style={{ fontSize: "9px", color: "rgba(201,168,76,0.5)", letterSpacing: "0.2em", marginBottom: "4px" }}>
-                PROJECTED BY 2034 (IMARC GROUP)
+                PROJECTED BY 2035 (MRFR)
               </div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: "2.5rem", fontWeight: 700, color: "var(--gold)" }}>$184.1B</div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "2.5rem", fontWeight: 700, color: "var(--gold)" }}>$105B</div>
             </div>
             <div style={{ marginLeft: "auto" }}>
               <div className="mono-data" style={{ fontSize: "9px", color: "var(--muted)", letterSpacing: "0.2em", marginBottom: "4px" }}>CAGR</div>
-              <div style={{ fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 700, color: "var(--success)" }}>22.3%</div>
+              <div style={{ fontFamily: "var(--font-display)", fontSize: "2rem", fontWeight: 700, color: "var(--success)" }}>20.4%</div>
             </div>
           </div>
         </div>
 
+        {/* Power Beaming & ONE THING */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
           {/* T1SatBravo */}
-          <div className="panel-card reveal reveal-delay-1" style={{ padding: "48px 40px" }}>
+          <div className="panel-card reveal reveal-delay-1 hover-glow" style={{ padding: "48px 40px" }}>
             <div className="corner-bracket tl" />
             <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "11px", letterSpacing: "0.25em", color: "var(--gold)", marginBottom: "8px" }}>
               SATELLITE PLATFORM
@@ -111,7 +112,7 @@ const PowerGrid = () => {
           </div>
 
           {/* ONE THING OS */}
-          <div className="panel-card reveal reveal-delay-2" style={{
+          <div className="panel-card reveal reveal-delay-2 hover-glow" style={{
             padding: "48px 40px",
             background: "linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(8,12,26,1) 60%)",
           }}>
@@ -153,6 +154,8 @@ const PowerGrid = () => {
                   padding: "12px 14px",
                   background: "rgba(0,212,255,0.04)",
                   border: "1px solid rgba(0,212,255,0.1)",
+                  transition: "all 0.3s",
+                  cursor: "default",
                 }}>
                   <span style={{ fontSize: "16px" }}>{item.icon}</span>
                   <span style={{ fontFamily: "var(--font-body)", fontSize: "0.85rem", color: "rgba(240,244,255,0.7)" }}>{item.label}</span>
@@ -177,21 +180,22 @@ const PowerGrid = () => {
           </div>
         </div>
 
-        {/* How It Works */}
+        {/* Power Beaming Chain - Animated Flow */}
         <div className="panel-card reveal" style={{ marginTop: "2px", padding: "48px 40px" }}>
           <div className="mono-data" style={{ fontSize: "11px", color: "var(--muted)", letterSpacing: "0.2em", marginBottom: "40px" }}>
             POWER BEAMING CHAIN — END-TO-END
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "0", flexWrap: "wrap" }}>
             {[
-              { step: "01", label: "Solar Collection", detail: "T1SatBravo captures continuous solar energy in LEO — 24/7, weather-independent" },
-              { step: "02", label: "RF Conversion", detail: "Solid-state power amplifiers convert to 2.45 GHz microwave beam, aimed at ground station" },
-              { step: "03", label: "Beam Transmission", detail: "Phased-array antenna steers beam to designated rectenna grid coordinates in real time" },
-              { step: "04", label: "Rectenna Reception", detail: "Ground-side rectenna (rectifying antenna) converts RF back to DC power with 85%+ efficiency" },
-              { step: "05", label: "ONE THING Grid", detail: "ONE THING OS distributes converted power to registered devices on the local mesh network" },
+              { step: "01", label: "Solar Collection", detail: "T1SatBravo captures continuous solar energy in LEO — 24/7, weather-independent", icon: "☀️" },
+              { step: "02", label: "RF Conversion", detail: "Solid-state power amplifiers convert to 2.45 GHz microwave beam, aimed at ground station", icon: "⚡" },
+              { step: "03", label: "Beam Transmission", detail: "Phased-array antenna steers beam to designated rectenna grid coordinates in real time", icon: "📡" },
+              { step: "04", label: "Rectenna Reception", detail: "Ground-side rectenna (rectifying antenna) converts RF back to DC power with 85%+ efficiency", icon: "🔌" },
+              { step: "05", label: "ONE THING Grid", detail: "ONE THING OS distributes converted power to registered devices on the local mesh network", icon: "🌐" },
             ].map((s, i, arr) => (
               <div key={i} style={{ display: "flex", alignItems: "center" }}>
                 <div style={{ padding: "20px 24px", textAlign: "center", minWidth: "140px" }}>
+                  <div style={{ fontSize: "24px", marginBottom: "8px" }}>{s.icon}</div>
                   <div style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem", fontWeight: 700, color: "var(--cyan)", marginBottom: "8px" }}>
                     {s.step}
                   </div>
@@ -203,7 +207,7 @@ const PowerGrid = () => {
                   </div>
                 </div>
                 {i < arr.length - 1 && (
-                  <div style={{ color: "var(--muted)", fontSize: "1.2rem", flexShrink: 0 }}>→</div>
+                  <div style={{ color: "var(--gold)", fontSize: "1.5rem", flexShrink: 0, animation: "energyPulse 2s ease-in-out infinite" }}>→</div>
                 )}
               </div>
             ))}

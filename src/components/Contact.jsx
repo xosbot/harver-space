@@ -39,6 +39,7 @@ const Contact = () => {
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
+          {/* Info Cards */}
           <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
             {[
               {
@@ -54,12 +55,12 @@ const Contact = () => {
                 color: "var(--gold)",
               },
             ].map((t, i) => (
-              <div key={i} className="panel-card reveal" style={{ padding: "36px", flex: 1 }}>
+              <div key={i} className="panel-card reveal hover-glow" style={{ padding: "36px", flex: 1 }}>
                 <div className="corner-bracket tl" style={{ borderColor: t.color }} />
                 <div className="mono-data" style={{ fontSize: "10px", color: t.color, letterSpacing: "0.2em", marginBottom: "12px" }}>
                   {t.tag}
                 </div>
-                <h3 style={{ fontFamily: "var(--font-body)", fontSize: "1.1rem", fontWeight: 600, color: "var(--white)", marginBottom: "12px" }}>
+                <h3 style={{ fontFamily: "var(--font-body)", fontSize: "1.1rem", fontWeight: 600, color: "var(--white)", marginBottom: "12px", letterSpacing: "0.05em" }}>
                   {t.title}
                 </h3>
                 <p style={{ fontFamily: "var(--font-light)", fontWeight: 300, fontSize: "0.95rem", color: "rgba(240,244,255,0.6)", lineHeight: 1.7 }}>
@@ -69,13 +70,14 @@ const Contact = () => {
             ))}
           </div>
 
+          {/* Form */}
           <div className="panel-card reveal reveal-delay-2" style={{ padding: "48px 40px" }}>
             <div className="corner-bracket tr" />
             <div className="corner-bracket bl" />
 
             {sent ? (
               <div style={{ textAlign: "center", padding: "40px 0" }}>
-                <div style={{ fontSize: "3rem", marginBottom: "16px" }}>✓</div>
+                <div style={{ fontSize: "3rem", marginBottom: "16px", color: "var(--success)" }}>✓</div>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "1.2rem", color: "var(--success)", letterSpacing: "0.1em", marginBottom: "12px" }}>
                   TRANSMISSION RECEIVED
                 </div>
@@ -147,6 +149,7 @@ const Contact = () => {
                       fontFamily: "var(--font-mono)",
                       fontSize: "13px",
                       outline: "none",
+                      cursor: "pointer",
                     }}
                   >
                     <option value="investor">Investor Inquiry</option>
@@ -181,6 +184,7 @@ const Contact = () => {
                       fontSize: "14px",
                       outline: "none",
                       resize: "vertical",
+                      transition: "border-color 0.2s",
                     }}
                     onFocus={(e) => e.target.style.borderColor = "var(--cyan)"}
                     onBlur={(e) => e.target.style.borderColor = "var(--border)"}

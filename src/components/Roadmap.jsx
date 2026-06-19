@@ -54,6 +54,7 @@ const Roadmap = () => {
         </div>
 
         <div style={{ position: "relative" }}>
+          {/* Vertical line */}
           <div style={{
             position: "absolute",
             left: "110px",
@@ -69,6 +70,7 @@ const Roadmap = () => {
               marginBottom: i < milestones.length - 1 ? "48px" : "0",
               alignItems: "flex-start",
             }}>
+              {/* Year */}
               <div style={{
                 width: "80px",
                 flexShrink: 0,
@@ -83,6 +85,7 @@ const Roadmap = () => {
                 }}>{m.year}</div>
               </div>
 
+              {/* Dot */}
               <div style={{ position: "relative", flexShrink: 0, paddingTop: "4px" }}>
                 <div style={{
                   width: "20px", height: "20px",
@@ -95,7 +98,8 @@ const Roadmap = () => {
                 }} />
               </div>
 
-              <div className="panel-card" style={{ flex: 1, padding: "32px 36px" }}>
+              {/* Content */}
+              <div className="panel-card hover-glow" style={{ flex: 1, padding: "32px 36px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px" }}>
                   <div>
                     <span className="mono-data" style={{ fontSize: "10px", color: m.color, letterSpacing: "0.2em", marginRight: "16px" }}>
