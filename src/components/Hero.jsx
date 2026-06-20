@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import OrbitalCanvas from "./OrbitalCanvas";
 import DataTicker from "./DataTicker";
 import Counter from "./Counter";
@@ -6,20 +6,6 @@ import Counter from "./Counter";
 const Hero = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [imgLoaded, setImgLoaded] = useState(false);
-  const [videoPaused, setVideoPaused] = useState(false);
-  const videoRef = useRef(null);
-
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setVideoPaused(false);
-      } else {
-        videoRef.current.pause();
-        setVideoPaused(true);
-      }
-    }
-  };
 
   useEffect(() => {
     const handleMouse = (e) => {
@@ -47,29 +33,7 @@ const Hero = () => {
         <OrbitalCanvas />
       </div>
 
-      {/* Video background — full-bleed, no scrim */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: 1,
-          opacity: imgLoaded ? 1 : 0,
-          transition: "opacity 1.5s ease",
-        }}
-        onLoadedData={() => setImgLoaded(true)}
-      >
-        <source src="/images/hero-video.mp4" type="video/mp4" />
-      </video>
-
-      {/* Earth image fallback */}
+      {/* Full-bleed Earth photography — SpaceX principle */}
       <img
         src="/images/hero-earth.jpg"
         alt="Earth from space"
@@ -80,17 +44,18 @@ const Hero = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          zIndex: 0,
-          opacity: imgLoaded ? 0 : 0.5,
+          zIndex: 1,
+          opacity: imgLoaded ? 1 : 0,
+          transition: "opacity 1.5s ease",
         }}
       />
 
-      {/* Minimal dark gradient — no heavy scrim, photography does the work */}
+      {/* Minimal dark gradient — photography does the work */}
       <div style={{
         position: "absolute",
         inset: 0,
         zIndex: 2,
-        background: "linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.6) 100%)",
+        background: "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.5) 100%)",
       }} />
 
       {/* Content */}
@@ -244,38 +209,6 @@ const Hero = () => {
       }}>
         HARVER — DEBRIS — REMOVAL — T25
       </div>
-
-      {/* Video play/pause toggle — minimal */}
-      <button
-        onClick={toggleVideo}
-        aria-label={videoPaused ? "Play video" : "Pause video"}
-        style={{
-          position: "absolute",
-          bottom: "32px",
-          right: "32px",
-          zIndex: 20,
-          width: "36px",
-          height: "36px",
-          borderRadius: "50%",
-          border: "1px solid rgba(255,255,255,0.15)",
-          background: "rgba(0,0,0,0.4)",
-          color: "var(--white)",
-          fontSize: "12px",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transition: "border-color 0.3s ease",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
-        }}
-      >
-        {videoPaused ? "▶" : "⏸"}
-      </button>
 
       <DataTicker />
     </section>
