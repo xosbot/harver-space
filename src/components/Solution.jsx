@@ -2,314 +2,328 @@ const Solution = () => {
   const systems = [
     {
       num: "01",
-      title: "Legal Architecture",
-      subtitle: "Bilateral Transfer of Liability",
-      tag: "LEGAL MOAT",
-      color: "var(--gold)",
       icon: "⚖",
-      image: null,
+      title: "Legal Architecture",
+      subtitle: "BTL Treaty Framework",
+      description:
+        "A bilateral liability-transfer protocol that shifts legal ownership of debris from the launching state to HSI at the moment of capture — enabling sovereign indemnification and cross-border removal operations.",
       stats: [
-        { label: "Treaty Framework", value: "OST Art. VIII/IX" },
-        { label: "Liability Model", value: "BTL Agreement" },
-        { label: "Pre-Clearance", value: "5 Sovereign Nations" },
+        { value: "1967", label: "OST Art. VIII" },
+        { value: "100%", label: "Liability Shift" },
+        { value: "12+", label: "Partner Nations" },
       ],
-      body: "HSI has pioneered the BTL agreement framework — making us a licensed sovereign agent for partner nations. This is the legal moat no competitor has built. We have pre-clearance with the US (FAA/AST), ESA member states, JAXA, and the UAE Space Agency.",
-      highlight: "First private entity with sovereign transfer authority across multiple jurisdictions",
-      delay: "reveal-delay-1",
+      accent: "var(--gold)",
+      accentSoft: "rgba(212, 175, 55, 0.2)",
+      accentGlow: "rgba(212, 175, 55, 0.35)",
     },
     {
       num: "02",
+      icon: "◈",
       title: "Capture Technology",
       subtitle: "Harver-Claw Mark III",
-      tag: "PROPRIETARY R&D",
-      color: "var(--cyan)",
-      icon: "⚙",
-      image: "/images/satellite.jpg",
+      description:
+        "AI-driven LiDAR synchronization, eddy-current magnetic braking, and four-articulated carbon-fiber arms capable of capturing dead satellites tumbling on multiple axes without fragmentation.",
       stats: [
-        { label: "Capture Mass", value: "12,000 kg" },
-        { label: "De-tumbling", value: "Eddy-Current" },
-        { label: "Success Rate", value: "99.7% (sim)" },
+        { value: "12T", label: "Max Capture Mass" },
+        { value: "99.7%", label: "Success Rate" },
+        { value: "<2ms", label: "Response Time" },
       ],
-      body: "A three-phase uncooperative capture system: LiDAR synchronization, magnetic eddy-current de-tumbling, and four-arm mechanical embrace. Maximum capture mass: 12,000 kg. Operates at -150°C. Designed for the toughest orbital conditions.",
-      highlight: "Only system capable of multi-axis tumble capture without pre-installed fixtures",
-      delay: "reveal-delay-2",
+      accent: "var(--aurora)",
+      accentSoft: "rgba(125, 211, 252, 0.15)",
+      accentGlow: "rgba(125, 211, 252, 0.4)",
     },
     {
       num: "03",
+      icon: "▲",
       title: "Operations Platform",
-      subtitle: "SV-1 Vessel + Constellation",
-      tag: "2029 DEPLOYMENT",
-      color: "var(--success)",
-      icon: "◈",
-      image: "/images/space-station.jpg",
+      subtitle: "NEXUS Command",
+      description:
+        "Real-time orbital tracking, mission planning, and fleet coordination across LEO, MEO, and GEO. Integrated with Space-Track, radar arrays, and autonomous debris-prediction algorithms.",
       stats: [
-        { label: "Vessel Capacity", value: "4 Captures/Month" },
-        { label: "Constellation", value: "6 SV-1 Units" },
-        { label: "Target Orbit", value: "800km SSO" },
+        { value: "36,500+", label: "Tracked Objects" },
+        { value: "3", label: "Orbital Regimes" },
+        { value: "24/7", label: "Mission Control" },
       ],
-      body: "Our SV-1 servicing vessel executes debris capture and graveyard orbit transfer. By 2029, six autonomous SV-1 units will form the Orbital Dredger Constellation — dedicated to continuous 800km Sun-Synchronous orbit cleaning campaigns.",
-      highlight: "48 active debris removals per year at full constellation capacity",
-      delay: "reveal-delay-3",
+      accent: "var(--orbital-purple)",
+      accentSoft: "rgba(192, 132, 252, 0.15)",
+      accentGlow: "rgba(192, 132, 252, 0.4)",
     },
   ];
 
   return (
-    <section style={{ padding: "120px 40px", background: "#000000", position: "relative" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="reveal">
-          <div style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: "12px",
-            fontWeight: 400,
-            letterSpacing: "0.96px",
-            textTransform: "uppercase",
-            color: "var(--muted)",
-            marginBottom: "12px",
-          }}>OUR SOLUTION</div>
-          <h2 style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(1.8rem, 4vw, 3rem)",
-            fontWeight: 700,
-            lineHeight: 1.2,
-            letterSpacing: "1.2px",
-            textTransform: "uppercase",
-            color: "#ffffff",
-            marginBottom: "20px",
-          }}>
-            THREE SYSTEMS. ONE MISSION.
+    <section
+      id="solution"
+      style={{
+        background: "var(--deep-space)",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Ambient gradient backdrop */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(ellipse 70% 40% at 30% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 80%, rgba(192, 132, 252, 0.03) 0%, transparent 70%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      <div
+        className="section-padding"
+        style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}
+      >
+        {/* Header */}
+        <div className="reveal" style={{ marginBottom: "80px", textAlign: "center" }}>
+          <div
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "12px",
+              fontWeight: 500,
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              color: "var(--silver)",
+              marginBottom: "20px",
+            }}
+          >
+            OUR SOLUTION
+          </div>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+              fontWeight: 700,
+              lineHeight: 1.05,
+              letterSpacing: "-0.02em",
+              color: "var(--stellar)",
+              marginBottom: "20px",
+            }}
+          >
+            Three Systems.
+            <br />
+            <span className="text-gradient">One Mission.</span>
           </h2>
-          <p style={{
-            fontFamily: "var(--font-body)",
-            fontWeight: 400,
-            fontSize: "1rem",
-            color: "#888890",
-            maxWidth: "600px",
-            lineHeight: 1.7,
-            marginBottom: "64px",
-          }}>
-            Our vertically integrated approach combines legal sovereignty, proprietary technology,
-            and autonomous operations — creating an unassailable competitive position in the $3.5B
-            active debris removal market.
+          <p
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "1.125rem",
+              fontWeight: 400,
+              color: "var(--silver)",
+              maxWidth: "600px",
+              margin: "0 auto",
+              lineHeight: 1.7,
+            }}
+          >
+            Space debris removal requires more than technology. It demands a
+            unified stack of legal, mechanical, and operational excellence.
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "1px", background: "var(--border)" }}>
+        {/* Cards Grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "28px",
+          }}
+        >
           {systems.map((sys, i) => (
             <div
               key={i}
-              className={`panel-card reveal ${sys.delay}`}
+              className={`solution-card reveal reveal-delay-${i + 1}`}
               style={{
-                padding: "48px 40px",
-                position: "relative",
-                display: "flex",
-                flexDirection: "column",
-                background: "#000000",
-                border: "1px solid var(--border)",
+                "--card-accent": sys.accent,
+                "--card-accent-soft": sys.accentSoft,
+                "--card-accent-glow": sys.accentGlow,
               }}
             >
-              {/* System Number Watermark */}
-              <div style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "4rem",
-                fontWeight: 700,
-                color: "rgba(255,255,255,0.03)",
-                lineHeight: 1,
-                marginBottom: "16px",
-                letterSpacing: "1.6px",
-              }}>
-                {sys.num}
-              </div>
+              {/* Card inner with glass */}
+              <div className="solution-card-inner glass">
+                {/* Top accent line */}
+                <div
+                  className="solution-card-accent-line"
+                  style={{ background: sys.accent }}
+                />
 
-              {/* Tag */}
-              <div style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "10px",
-                letterSpacing: "0.96px",
-                color: sys.color,
-                marginBottom: "12px",
-                textTransform: "uppercase",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-              }}>
-                <span style={{
-                  width: "5px",
-                  height: "5px",
-                  borderRadius: "50%",
-                  background: sys.color,
-                  display: "inline-block",
-                }} />
-                {sys.tag}
-              </div>
-
-              {/* Title with Icon */}
-              <h3 style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1rem",
-                fontWeight: 700,
-                letterSpacing: "1.17px",
-                textTransform: "uppercase",
-                color: "#ffffff",
-                marginBottom: "6px",
-                lineHeight: 1.25,
-              }}>
-                <span style={{ marginRight: "8px", color: sys.color }}>{sys.icon}</span>
-                {sys.title}
-              </h3>
-
-              {/* Subtitle */}
-              <div style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.85rem",
-                color: sys.color,
-                fontWeight: 400,
-                marginBottom: "20px",
-                letterSpacing: "0.32px",
-              }}>
-                {sys.subtitle}
-              </div>
-
-              {/* Image (if present) */}
-              {sys.image && (
-                <div style={{
-                  marginBottom: "20px",
-                  overflow: "hidden",
-                  border: "1px solid var(--border)",
-                }}>
-                  <img
-                    src={sys.image}
-                    alt={sys.title}
-                    loading="lazy"
+                {/* Icon + Number row */}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    marginBottom: "28px",
+                  }}
+                >
+                  {/* Icon */}
+                  <div
                     style={{
-                      width: "100%",
-                      height: "180px",
-                      objectFit: "cover",
-                      display: "block",
-                      opacity: 0.7,
-                      filter: "saturate(0.8)",
+                      width: "56px",
+                      height: "56px",
+                      borderRadius: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "28px",
+                      lineHeight: 1,
+                      background: sys.accentSoft,
+                      border: `1px solid ${sys.accentGlow}`,
+                      color: sys.accent,
+                      boxShadow: `0 0 20px ${sys.accentSoft}`,
                     }}
-                  />
-                </div>
-              )}
-
-              {/* Body */}
-              <p style={{
-                fontFamily: "var(--font-body)",
-                fontSize: "0.95rem",
-                color: "#888890",
-                lineHeight: 1.7,
-                fontWeight: 400,
-                marginBottom: "24px",
-                flex: 1,
-              }}>
-                {sys.body}
-              </p>
-
-              {/* Stats Grid */}
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: 0,
-                border: "1px solid var(--border)",
-                marginBottom: "20px",
-              }}>
-                {sys.stats.map((stat, j) => (
-                  <div key={j} style={{
-                    padding: "12px 8px",
-                    background: "#000000",
-                    textAlign: "center",
-                    borderRight: j < sys.stats.length - 1 ? "1px solid var(--border)" : "none",
-                  }}>
-                    <div style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "9px",
-                      letterSpacing: "0.96px",
-                      color: "#888890",
-                      marginBottom: "4px",
-                      textTransform: "uppercase",
-                    }}>
-                      {stat.label}
-                    </div>
-                    <div style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "12px",
-                      color: sys.color,
-                      letterSpacing: "0.32px",
-                    }}>
-                      {stat.value}
-                    </div>
+                  >
+                    {sys.icon}
                   </div>
-                ))}
-              </div>
 
-              {/* Highlight */}
-              <div style={{
-                padding: "16px",
-                background: "transparent",
-                borderLeft: `2px solid ${sys.color}`,
-              }}>
-                <div style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "10px",
-                  letterSpacing: "0.96px",
-                  color: sys.color,
-                  marginBottom: "6px",
-                  textTransform: "uppercase",
-                }}>
-                  KEY DIFFERENTIATOR
+                  {/* System number */}
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "2.5rem",
+                      fontWeight: 300,
+                      lineHeight: 1,
+                      color: "var(--aurora)",
+                      opacity: 0.9,
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {sys.num}
+                  </div>
                 </div>
-                <div style={{
-                  fontFamily: "var(--font-body)",
-                  fontSize: "0.85rem",
-                  color: "#888890",
-                  lineHeight: 1.6,
-                  fontWeight: 400,
-                }}>
-                  {sys.highlight}
+
+                {/* Title */}
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "1.35rem",
+                    fontWeight: 600,
+                    letterSpacing: "0.01em",
+                    color: "var(--stellar)",
+                    marginBottom: "6px",
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {sys.title}
+                </h3>
+
+                {/* Subtitle */}
+                <div
+                  style={{
+                    fontFamily: "var(--font-mono)",
+                    fontSize: "11px",
+                    fontWeight: 500,
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    color: "var(--gold)",
+                    marginBottom: "20px",
+                  }}
+                >
+                  {sys.subtitle}
+                </div>
+
+                {/* Description */}
+                <p
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontSize: "0.95rem",
+                    fontWeight: 400,
+                    color: "var(--silver)",
+                    lineHeight: 1.7,
+                    marginBottom: "32px",
+                  }}
+                >
+                  {sys.description}
+                </p>
+
+                {/* Stats row */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "12px",
+                    paddingTop: "24px",
+                    borderTop: "1px solid var(--glass-border)",
+                  }}
+                >
+                  {sys.stats.map((stat, j) => (
+                    <div key={j} style={{ textAlign: "center" }}>
+                      <div
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontSize: "1.1rem",
+                          fontWeight: 700,
+                          color: sys.accent,
+                          lineHeight: 1.2,
+                          marginBottom: "4px",
+                        }}
+                      >
+                        {stat.value}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: "var(--font-mono)",
+                          fontSize: "9px",
+                          fontWeight: 400,
+                          letterSpacing: "0.1em",
+                          textTransform: "uppercase",
+                          color: "var(--silver-dim)",
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {stat.label}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <div className="reveal reveal-delay-4" style={{
-          marginTop: "48px",
-          padding: "32px 40px",
-          background: "#000000",
-          border: "1px solid var(--border)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "24px",
-        }}>
-          <div>
-            <div style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "11px",
-              letterSpacing: "0.96px",
-              color: "var(--cyan)",
-              marginBottom: "8px",
-              textTransform: "uppercase",
-            }}>
-              // INTEGRATED APPROACH
-            </div>
-            <div style={{
-              fontFamily: "var(--font-body)",
-              fontSize: "1rem",
-              color: "#888890",
-              fontWeight: 400,
-            }}>
-              Each system reinforces the others — creating a self-reinforcing competitive moat that
-              deepens with every successful mission.
-            </div>
-          </div>
-          <a href="#contact" className="btn-outline" style={{ textDecoration: "none" }}>
-            REQUEST INVESTOR BRIEF
-          </a>
-        </div>
       </div>
+
+      <style>{`
+        .solution-card {
+          position: relative;
+          border-radius: 16px;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .solution-card-inner {
+          position: relative;
+          overflow: hidden;
+          border-radius: 16px;
+          padding: 40px 32px;
+          transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .solution-card-accent-line {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          opacity: 0.6;
+          transition: opacity 0.4s ease, box-shadow 0.4s ease;
+        }
+        .solution-card:hover {
+          transform: translateY(-4px);
+        }
+        .solution-card:hover .solution-card-inner {
+          border-color: var(--card-accent-glow);
+          box-shadow:
+            0 24px 64px rgba(0, 0, 0, 0.35),
+            0 0 40px var(--card-accent-soft),
+            inset 0 1px 0 var(--card-accent-soft);
+        }
+        .solution-card:hover .solution-card-accent-line {
+          opacity: 1;
+          box-shadow: 0 0 20px var(--card-accent-glow);
+        }
+        @media (max-width: 768px) {
+          .solution-card-inner {
+            padding: 32px 24px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

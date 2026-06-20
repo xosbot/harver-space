@@ -1,194 +1,199 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
 
 const Nav = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
-  };
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+    setMenuOpen(false)
+  }
 
   const navLinks = [
     ["mission", "Mission"],
     ["technology", "Technology"],
     ["market", "Market"],
-    ["legal", "Legal"],
     ["roadmap", "Roadmap"],
     ["contact", "Contact"],
-  ];
+  ]
 
   return (
     <>
-      <nav aria-label="Main navigation" style={{
+      <nav style={{
         position: "fixed",
-        top: 0, left: 0, right: 0,
+        top: 20,
+        left: "50%",
+        transform: "translateX(-50%)",
         zIndex: 1000,
-        padding: "0 40px",
+        width: "calc(100% - 40px)",
+        maxWidth: "1200px",
+        padding: "0 24px",
         height: "64px",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        background: scrolled ? "rgba(0,0,0,0.9)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "1px solid transparent",
+        background: scrolled ? "rgba(11, 20, 38, 0.8)" : "rgba(11, 20, 38, 0.4)",
+        backdropFilter: "blur(20px) saturate(1.2)",
+        WebkitBackdropFilter: "blur(20px) saturate(1.2)",
+        border: "1px solid rgba(125, 211, 252, 0.08)",
+        borderRadius: "16px",
         transition: "all 0.4s ease",
       }}>
         {/* Logo */}
-        <div
-          style={{ display: "flex", alignItems: "baseline", gap: "0", cursor: "pointer" }}
+        <div 
+          style={{ 
+            display: "flex", 
+            alignItems: "center", 
+            gap: "12px",
+            cursor: "pointer" 
+          }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
+          <div style={{
+            width: "36px",
+            height: "36px",
+            borderRadius: "10px",
+            background: "linear-gradient(135deg, var(--aurora), var(--orbital-purple))",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
+            <span style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "16px",
+              fontWeight: 700,
+              color: "var(--void)",
+            }}>H</span>
+          </div>
           <span style={{
             fontFamily: "var(--font-display)",
-            fontSize: "14px",
-            fontWeight: 800,
-            letterSpacing: "0.18em",
-            color: "var(--white)",
-            textTransform: "uppercase",
-          }}>HARVER</span>
-          <span style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "14px",
-            fontWeight: 800,
-            letterSpacing: "0.18em",
-            color: "var(--cyan)",
-            marginLeft: "4px",
-            textTransform: "uppercase",
-          }}>SPACE</span>
+            fontSize: "16px",
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
+            color: "var(--stellar)",
+          }}>
+            Harver Space
+          </span>
         </div>
 
-        {/* Desktop Nav — uppercase micro text */}
-        <div className="hide-mobile" style={{ display: "flex", gap: "32px", alignItems: "center" }}>
+        {/* Desktop Nav */}
+        <div style={{ 
+          display: "flex", 
+          gap: "8px", 
+          alignItems: "center",
+        }} className="desktop-nav">
           {navLinks.map(([id, label]) => (
-            <span key={id} className="nav-link" onClick={() => scrollTo(id)}>{label}</span>
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "14px",
+                fontWeight: 500,
+                color: "var(--silver)",
+                background: "transparent",
+                border: "none",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "var(--stellar)"
+                e.target.style.background = "rgba(125, 211, 252, 0.08)"
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "var(--silver)"
+                e.target.style.background = "transparent"
+              }}
+            >
+              {label}
+            </button>
           ))}
           <button
             className="btn-primary"
-            style={{ padding: "10px 24px", fontSize: "11px" }}
+            style={{ padding: "10px 24px", fontSize: "13px" }}
             onClick={() => scrollTo("contact")}
           >
-            Partner With Us
+            Get in Touch
           </button>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="show-mobile"
           style={{
             display: "none",
-            background: "none",
-            border: "1px solid rgba(255,255,255,0.15)",
-            color: "var(--white)",
-            fontSize: "16px",
+            background: "transparent",
+            border: "none",
+            color: "var(--stellar)",
             cursor: "pointer",
-            fontFamily: "var(--font-display)",
-            padding: "6px 10px",
-            lineHeight: 1,
-            borderRadius: "2px",
+            padding: "8px",
           }}
+          className="mobile-menu-btn"
         >
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 
-      {/* Mobile slide-in panel */}
-      <div style={{
-        position: "fixed",
-        top: 0,
-        right: menuOpen ? 0 : "-100%",
-        width: "75vw",
-        maxWidth: "320px",
-        height: "100vh",
-        background: "rgba(0,0,0,0.98)",
-        backdropFilter: "blur(30px)",
-        WebkitBackdropFilter: "blur(30px)",
-        borderLeft: "1px solid rgba(255,255,255,0.06)",
-        zIndex: 999,
-        display: "flex",
-        flexDirection: "column",
-        paddingTop: "80px",
-        paddingRight: "40px",
-        paddingLeft: "40px",
-        transition: "right 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-      }}>
-        {navLinks.map(([id, label], i) => (
-          <span
-            key={id}
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "12px",
-              fontWeight: 600,
-              letterSpacing: "0.12em",
-              color: "var(--muted)",
-              cursor: "pointer",
-              textTransform: "uppercase",
-              padding: "18px 0",
-              borderBottom: "1px solid rgba(255,255,255,0.04)",
-              opacity: menuOpen ? 1 : 0,
-              transform: menuOpen ? "translateX(0)" : "translateX(20px)",
-              transition: `opacity 0.3s ease ${i * 0.05}s, transform 0.3s ease ${i * 0.05}s`,
-            }}
-            onClick={() => scrollTo(id)}
-          >
-            {label}
-          </span>
-        ))}
-        <button
-          className="btn-primary"
-          style={{
-            marginTop: "32px",
-            padding: "14px 24px",
-            fontSize: "11px",
-            width: "100%",
-            opacity: menuOpen ? 1 : 0,
-            transform: menuOpen ? "translateX(0)" : "translateX(20px)",
-            transition: `opacity 0.3s ease 0.35s, transform 0.3s ease 0.35s`,
-          }}
-          onClick={() => scrollTo("contact")}
-        >
-          Partner With Us
-        </button>
-      </div>
-
-      {/* Backdrop */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.6)",
-            zIndex: 998,
-          }}
-          onClick={() => setMenuOpen(false)}
-        />
+        <div style={{
+          position: "fixed",
+          top: 100,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "calc(100% - 40px)",
+          maxWidth: "1200px",
+          background: "rgba(11, 20, 38, 0.95)",
+          backdropFilter: "blur(20px)",
+          border: "1px solid rgba(125, 211, 252, 0.08)",
+          borderRadius: "16px",
+          padding: "24px",
+          zIndex: 999,
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+        }}>
+          {navLinks.map(([id, label]) => (
+            <button
+              key={id}
+              onClick={() => scrollTo(id)}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "16px",
+                fontWeight: 500,
+                color: "var(--silver)",
+                background: "transparent",
+                border: "none",
+                padding: "12px 16px",
+                borderRadius: "8px",
+                cursor: "pointer",
+                textAlign: "left",
+                transition: "all 0.2s ease",
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       )}
 
       <style>{`
         @media (max-width: 768px) {
-          nav .hide-mobile { display: none !important; }
-          nav .show-mobile { display: block !important; }
+          .desktop-nav { display: none !important; }
+          .mobile-menu-btn { display: block !important; }
         }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

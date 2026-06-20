@@ -5,11 +5,11 @@ const Footer = () => {
         style={{
           fontFamily: "var(--font-display)",
           fontSize: "11px",
-          fontWeight: 700,
-          color: "var(--muted)",
+          fontWeight: 600,
+          color: "var(--silver)",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          marginBottom: "16px",
+          marginBottom: "20px",
         }}
       >
         {title}
@@ -21,17 +21,16 @@ const Footer = () => {
           style={{
             display: "block",
             fontFamily: "var(--font-body)",
-            fontSize: "13px",
+            fontSize: "14px",
             fontWeight: 400,
-            color: "var(--muted-dim)",
-            letterSpacing: "0.05em",
-            textTransform: "uppercase",
-            marginBottom: "10px",
+            color: "var(--silver-dim)",
+            letterSpacing: "0.02em",
+            marginBottom: "12px",
             textDecoration: "none",
-            transition: "color 0.2s",
+            transition: "color 0.2s ease",
           }}
-          onMouseEnter={(e) => (e.target.style.color = "var(--white)")}
-          onMouseLeave={(e) => (e.target.style.color = "var(--muted-dim)")}
+          onMouseEnter={(e) => (e.target.style.color = "var(--stellar)")}
+          onMouseLeave={(e) => (e.target.style.color = "var(--silver-dim)")}
         >
           {link}
         </a>
@@ -42,9 +41,9 @@ const Footer = () => {
   return (
     <footer
       style={{
-        padding: "60px 40px 40px",
-        background: "var(--black)",
-        borderTop: "1px solid var(--border)",
+        padding: "80px 40px 40px",
+        background: "var(--void)",
+        borderTop: "1px solid var(--glass-border)",
         position: "relative",
       }}
     >
@@ -55,31 +54,45 @@ const Footer = () => {
             display: "grid",
             gridTemplateColumns: "1.5fr 1fr 1fr 1fr 1fr",
             gap: "40px",
-            marginBottom: "48px",
+            marginBottom: "60px",
           }}
         >
-          {/* Logo + Tagline + Contact */}
+          {/* Logo + Tagline */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                marginBottom: "20px",
+              }}
+            >
               <div
                 style={{
                   width: "28px",
                   height: "28px",
-                  border: "1.5px solid var(--white)",
+                  border: "1.5px solid var(--stellar)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <div style={{ width: "10px", height: "10px", background: "var(--white)" }} />
+                <div
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    background: "var(--stellar)",
+                  }}
+                />
               </div>
               <span
                 style={{
                   fontFamily: "var(--font-display)",
                   fontSize: "14px",
-                  fontWeight: 800,
-                  letterSpacing: "0.25em",
+                  fontWeight: 700,
+                  letterSpacing: "0.2em",
                   textTransform: "uppercase",
+                  color: "var(--stellar)",
                 }}
               >
                 HARVER SPACE
@@ -88,136 +101,80 @@ const Footer = () => {
             <p
               style={{
                 fontFamily: "var(--font-body)",
-                fontSize: "13px",
-                color: "var(--muted-dim)",
+                fontSize: "14px",
+                color: "var(--silver)",
                 lineHeight: 1.7,
                 fontWeight: 400,
-                marginBottom: "24px",
+                maxWidth: "280px",
               }}
             >
               Orbital stewardship, debris removal, and wireless power beaming.
               Building the grid above the grid.
             </p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                SECTOR 62, NOIDA, UP 201301, INDIA
-              </div>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                CONTACT@HARVERSPACE.COM
-              </div>
-              <div style={{ fontFamily: "var(--font-mono)", fontSize: "10px", color: "var(--muted)", letterSpacing: "0.1em" }}>
-                +91 120 456 7890
-              </div>
-            </div>
           </div>
 
           {/* 4-Column Links */}
-          {linkCol("COMPANY", ["About HSI", "Roadmap", "Market", "Aashrayam", "Careers"])}
-          {linkCol("TECHNOLOGY", ["Debris Removal", "Power Beaming", "ONE THING OS", "SV-1 Vessel"])}
-          {linkCol("RESOURCES", ["Medium Dispatch", "Press Kit", "Newsletter", "Partner With Us", "Contact"])}
-          {linkCol("LEGAL", ["Privacy Policy", "Terms of Service", "Legal Framework", "BTL Framework"])}
+          {linkCol("Company", ["About", "Roadmap", "Market", "Careers"])}
+          {linkCol("Technology", ["Debris Removal", "Power Beaming", "ONE THING OS"])}
+          {linkCol("Resources", ["Medium Dispatch", "Press Kit", "Newsletter"])}
+          {linkCol("Legal", ["Privacy", "Terms", "BTL Framework"])}
         </div>
 
-        {/* Social Links Row */}
+        {/* Divider */}
         <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "32px",
-            marginBottom: "32px",
-            paddingBottom: "32px",
-            borderBottom: "1px solid var(--border)",
-          }}
-        >
-          {[
-            { name: "X", url: "https://x.com/HarverSpace" },
-            { name: "LinkedIn", url: "https://linkedin.com/company/harver-space" },
-            { name: "YouTube", url: "https://youtube.com/@HarverSpace" },
-            { name: "Medium", url: "https://medium.com/hsi-dispatch" },
-          ].map((s, i) => (
-            <a
-              key={i}
-              href={s.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "11px",
-                fontWeight: 500,
-                color: "var(--muted)",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.target.style.color = "var(--white)")}
-              onMouseLeave={(e) => (e.target.style.color = "var(--muted)")}
-            >
-              {s.name}
-            </a>
-          ))}
-        </div>
+          className="divider"
+          style={{ marginBottom: "32px" }}
+        />
 
-        {/* Trust Badges Row */}
+        {/* Bottom Bar */}
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "24px",
-            marginBottom: "32px",
-          }}
-        >
-          {["ISO 27001", "SOC 2 TYPE II", "GDPR COMPLIANT"].map((badge, i) => (
-            <div
-              key={i}
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "9px",
-                fontWeight: 400,
-                color: "var(--muted)",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-              }}
-            >
-              {badge}
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Row */}
-        <div
-          style={{
-            borderTop: "1px solid var(--border)",
-            paddingTop: "24px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             flexWrap: "wrap",
-            gap: "16px",
+            gap: "24px",
           }}
         >
           <div
             style={{
               fontFamily: "var(--font-mono)",
-              fontSize: "10px",
-              color: "var(--muted-dim)",
+              fontSize: "11px",
+              color: "var(--silver-dim)",
               letterSpacing: "0.1em",
             }}
           >
             © 2026 HARVER SPACE INDUSTRIES — ALL RIGHTS RESERVED
           </div>
 
-          <div
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: "10px",
-              color: "var(--success)",
-              letterSpacing: "0.1em",
-              animation: "blink 3s ease-in-out infinite",
-            }}
-          >
-            ● SYSTEM NOMINAL
+          <div style={{ display: "flex", gap: "24px" }}>
+            {[
+              { name: "X", url: "https://x.com/HarverSpace" },
+              { name: "LinkedIn", url: "https://linkedin.com/company/harver-space" },
+              { name: "YouTube", url: "https://youtube.com/@HarverSpace" },
+              { name: "Medium", url: "https://medium.com/hsi-dispatch" },
+            ].map((s, i) => (
+              <a
+                key={i}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "11px",
+                  fontWeight: 500,
+                  color: "var(--silver-dim)",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => (e.target.style.color = "var(--stellar)")}
+                onMouseLeave={(e) => (e.target.style.color = "var(--silver-dim)")}
+              >
+                {s.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>
