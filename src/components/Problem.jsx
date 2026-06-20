@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Counter from "./Counter";
+import DebrisVisualization from "./DebrisVisualization";
 
 const Problem = () => {
   const sectionRef = useRef(null);
@@ -107,6 +108,11 @@ const Problem = () => {
             doctrine applies in space. The result: a global commons becoming a
             debris minefield with no legal path to cleanup.
           </p>
+        </div>
+
+        {/* Debris Visualization */}
+        <div className={revealClass()} style={{ marginBottom: "80px", transitionDelay: "0.1s" }}>
+          <DebrisVisualization />
         </div>
 
         {/* Stat Cards */}

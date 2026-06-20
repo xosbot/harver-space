@@ -1,3 +1,5 @@
+import CaptureMechanism from "./CaptureMechanism";
+
 const Technology = () => {
   const phases = [
     {
@@ -120,6 +122,13 @@ const Technology = () => {
             simultaneously. The Harver-Claw Mark III is engineered specifically
             for this problem.
           </p>
+        </div>
+
+        {/* Capture Mechanism Diagram */}
+        <div className="reveal" style={{ marginBottom: "80px" }}>
+          <div className="glass" style={{ padding: "40px", borderRadius: "16px" }}>
+            <CaptureMechanism />
+          </div>
         </div>
 
         {/* Phase Cards */}

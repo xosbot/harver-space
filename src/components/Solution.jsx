@@ -1,3 +1,5 @@
+import SatelliteDiagram from "./SatelliteDiagram";
+
 const Solution = () => {
   const systems = [
     {
@@ -119,6 +121,11 @@ const Solution = () => {
             Space debris removal requires more than technology. It demands a
             unified stack of legal, mechanical, and operational excellence.
           </p>
+        </div>
+
+        {/* Satellite Diagram */}
+        <div className="reveal" style={{ marginBottom: "80px" }}>
+          <SatelliteDiagram />
         </div>
 
         {/* Cards Grid */}

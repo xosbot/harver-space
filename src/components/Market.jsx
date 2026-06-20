@@ -1,4 +1,4 @@
-import React from 'react';
+import MarketChart from "./MarketChart";
 
 const Market = () => {
   const sectionStyle = {
@@ -187,6 +187,11 @@ const Market = () => {
             <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>by 2035</div>
             <div style={cagrStyle}>CAGR 17.1%</div>
           </div>
+        </div>
+
+        {/* Market Growth Chart */}
+        <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+          <MarketChart />
         </div>
 
         <div style={competitorSectionStyle}>
