@@ -33,7 +33,38 @@ const Hero = () => {
         justifyContent: 'center',
       }}
     >
-      <AnimatedBackground />
+      {/* Earth photograph background */}
+      <img
+        src="/images/hero-earth.jpg"
+        alt="Earth from space"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          zIndex: 0,
+        }}
+      />
+
+      {/* Cinematic dark overlay for readability */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: `
+            linear-gradient(180deg, rgba(5,10,20,0.35) 0%, rgba(5,10,20,0.15) 40%, rgba(5,10,20,0.55) 100%),
+            radial-gradient(ellipse 80% 60% at 50% 50%, rgba(5,10,20,0.2) 0%, rgba(5,10,20,0.6) 100%)
+          `,
+          zIndex: 1,
+        }}
+      />
+
+      {/* Keep canvas animation as overlay */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, opacity: 0.5, mixBlendMode: 'screen' }}>
+        <AnimatedBackground />
+      </div>
 
       {/* Gradient overlay */}
       <div
@@ -45,7 +76,7 @@ const Hero = () => {
             radial-gradient(ellipse 60% 40% at 20% 100%, rgba(192, 132, 252, 0.03) 0%, transparent 70%),
             linear-gradient(180deg, transparent 0%, rgba(10, 10, 15, 0.5) 100%)
           `,
-          zIndex: 1,
+          zIndex: 3,
         }}
       />
 
@@ -68,8 +99,8 @@ const Hero = () => {
             alignItems: 'center',
             gap: '10px',
             padding: '8px 20px',
-            background: 'rgba(125, 211, 252, 0.08)',
-            border: '1px solid rgba(125, 211, 252, 0.15)',
+            background: 'rgba(5, 10, 20, 0.45)',
+            border: '1px solid rgba(125, 211, 252, 0.2)',
             borderRadius: '100px',
             marginBottom: '40px',
             fontFamily: 'var(--font-mono)',
@@ -101,6 +132,7 @@ const Hero = () => {
             letterSpacing: '-0.02em',
             color: 'var(--stellar)',
             marginBottom: '16px',
+            textShadow: '0 4px 30px rgba(0,0,0,0.5)',
           }}
         >
           Building the Grid
@@ -118,6 +150,7 @@ const Hero = () => {
             lineHeight: 1.7,
             margin: '0 auto 48px',
             fontWeight: 300,
+            textShadow: '0 2px 20px rgba(0,0,0,0.6)',
           }}
         >
           Harver Space Industries operates at the intersection of sovereign law,
@@ -159,6 +192,7 @@ const Hero = () => {
                   color: stat.color,
                   lineHeight: 1,
                   marginBottom: '8px',
+                  textShadow: '0 2px 20px rgba(0,0,0,0.6)',
                 }}
               >
                 <Counter target={stat.value} prefix={stat.prefix || ''} suffix={stat.suffix} />
@@ -170,6 +204,7 @@ const Hero = () => {
                   color: 'var(--silver-dim)',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
+                  textShadow: '0 1px 10px rgba(0,0,0,0.6)',
                 }}
               >
                 {stat.label}

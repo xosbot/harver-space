@@ -61,13 +61,33 @@ const Technology = () => {
         overflow: "hidden",
       }}
     >
-      {/* Subtle gradient backdrop */}
+      {/* Space station photograph — full-bleed background */}
+      <img
+        src="/images/space-station.jpg"
+        alt="International Space Station with astronaut spacewalk"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+          opacity: 0.14,
+          mixBlendMode: "screen",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Subtle gradient backdrop + dark overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse 80% 50% at 20% 40%, rgba(125, 211, 252, 0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(212, 175, 55, 0.03) 0%, transparent 70%)",
+          background: `
+            radial-gradient(ellipse 80% 50% at 20% 40%, rgba(125, 211, 252, 0.04) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 40% at 80% 60%, rgba(212, 175, 55, 0.03) 0%, transparent 70%),
+            linear-gradient(180deg, rgba(5,10,20,0.75) 0%, rgba(5,10,20,0.5) 50%, rgba(5,10,20,0.8) 100%)
+          `,
           pointerEvents: "none",
           zIndex: 0,
         }}

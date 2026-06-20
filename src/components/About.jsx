@@ -45,13 +45,33 @@ const About = () => {
         overflow: "hidden",
       }}
     >
-      {/* Subtle aurora backdrop */}
+      {/* Mission control photograph — cinematic background */}
+      <img
+        src="/images/mission-control.jpg"
+        alt="NASA mission control room"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+          opacity: 0.1,
+          mixBlendMode: "screen",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Subtle aurora backdrop + dark overlay */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse 70% 50% at 30% 30%, rgba(125, 211, 252, 0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 70% 70%, rgba(192, 132, 252, 0.03) 0%, transparent 70%)",
+          background: `
+            radial-gradient(ellipse 70% 50% at 30% 30%, rgba(125, 211, 252, 0.04) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 50% at 70% 70%, rgba(192, 132, 252, 0.03) 0%, transparent 70%),
+            linear-gradient(180deg, rgba(11, 20, 38, 0.8) 0%, rgba(11, 20, 38, 0.5) 50%, rgba(11, 20, 38, 0.85) 100%)
+          `,
           pointerEvents: "none",
           zIndex: 0,
         }}

@@ -48,8 +48,38 @@ const Roadmap = () => {
   ];
 
   return (
-    <section id="roadmap" className="roadmap-section section-padding">
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+    <section id="roadmap" className="roadmap-section section-padding" style={{ position: "relative", overflow: "hidden" }}>
+      {/* Rocket launch photograph — accent background */}
+      <img
+        src="/images/rocket-launch.jpg"
+        alt="SpaceX Falcon Heavy launch"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center top",
+          opacity: 0.12,
+          zIndex: 0,
+        }}
+      />
+
+      {/* Gradient overlays for cinematic feel */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `
+            linear-gradient(180deg, var(--deep-space) 0%, rgba(11,20,38,0.85) 20%, rgba(11,20,38,0.6) 50%, rgba(11,20,38,0.85) 80%, var(--deep-space) 100%),
+            radial-gradient(ellipse 70% 50% at 50% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 70%)
+          `,
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ maxWidth: "1200px", margin: "0 auto", position: "relative", zIndex: 1 }}>
         {/* Header */}
         <div className="reveal" style={{ marginBottom: "80px", textAlign: "center" }}>
           <div className="section-label">ROADMAP</div>

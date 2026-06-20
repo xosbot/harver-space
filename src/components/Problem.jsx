@@ -65,6 +65,40 @@ const Problem = () => {
         overflow: "hidden",
       }}
     >
+      {/* Debris field photograph — subtle background on the right */}
+      <img
+        src="/images/debris-field.jpg"
+        alt="Orbital debris field"
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: "55%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center left",
+          opacity: 0.22,
+          mixBlendMode: "screen",
+          zIndex: 0,
+          maskImage: "linear-gradient(to right, transparent 0%, black 40%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 40%)",
+        }}
+      />
+
+      {/* Additional dark overlay for readability */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: `
+            linear-gradient(90deg, var(--void) 0%, rgba(5,10,20,0.85) 50%, rgba(5,10,20,0.6) 100%),
+            radial-gradient(ellipse 60% 50% at 80% 30%, rgba(5,10,20,0.4) 0%, transparent 70%)
+          `,
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
+
       <div
         style={{
           maxWidth: "1200px",

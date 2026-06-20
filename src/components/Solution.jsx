@@ -61,15 +61,34 @@ const Solution = () => {
         overflow: "hidden",
       }}
     >
-      {/* Ambient gradient backdrop */}
+      {/* Featured satellite image — cinematic full-bleed background */}
+      <img
+        src="/images/satellite.jpg"
+        alt="Satellite in orbit with aurora"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center",
+          opacity: 0.18,
+          zIndex: 0,
+        }}
+      />
+
+      {/* Gradient overlay for text readability */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background:
-            "radial-gradient(ellipse 70% 40% at 30% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 80%, rgba(192, 132, 252, 0.03) 0%, transparent 70%)",
-          pointerEvents: "none",
+          background: `
+            radial-gradient(ellipse 70% 50% at 30% 20%, rgba(11, 20, 38, 0.2) 0%, transparent 70%),
+            radial-gradient(ellipse 60% 50% at 80% 80%, rgba(11, 20, 38, 0.3) 0%, transparent 70%),
+            linear-gradient(180deg, rgba(11, 20, 38, 0.5) 0%, rgba(11, 20, 38, 0.2) 50%, rgba(11, 20, 38, 0.6) 100%)
+          `,
           zIndex: 0,
+          pointerEvents: "none",
         }}
       />
 
@@ -121,6 +140,61 @@ const Solution = () => {
             Space debris removal requires more than technology. It demands a
             unified stack of legal, mechanical, and operational excellence.
           </p>
+        </div>
+
+        {/* Prominent featured satellite image */}
+        <div className="reveal" style={{ marginBottom: "80px" }}>
+          <div
+            style={{
+              position: "relative",
+              borderRadius: "16px",
+              overflow: "hidden",
+              border: "1px solid var(--glass-border)",
+              boxShadow: "0 24px 80px rgba(0,0,0,0.4)",
+            }}
+          >
+            <img
+              src="/images/satellite.jpg"
+              alt="Satellite in orbit with aurora borealis"
+              style={{
+                width: "100%",
+                height: "auto",
+                maxHeight: "520px",
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
+            />
+            {/* Bottom gradient to blend into section */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "40%",
+                background: "linear-gradient(to top, var(--deep-space) 0%, transparent 100%)",
+                pointerEvents: "none",
+              }}
+            />
+            {/* Subtle caption overlay */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: "24px",
+                left: "28px",
+                fontFamily: "var(--font-mono)",
+                fontSize: "11px",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "var(--silver)",
+                textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+                zIndex: 2,
+              }}
+            >
+              HSI Orbital Asset — Aurora Pass
+            </div>
+          </div>
         </div>
 
         {/* Satellite Diagram */}
